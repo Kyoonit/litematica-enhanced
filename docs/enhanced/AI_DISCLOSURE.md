@@ -1,0 +1,12 @@
+# AI disclosure — Litematica Enhanced
+
+This unofficial fork is developed with the help of generative AI (Anthropic's Claude via Claude Code), under the direction of a human owner who decides scope, reviews and approves every merge, and performs manual testing.
+
+| Area | AI role | Human role | Since |
+|---|---|---|---|
+| Code (per subsystem) | **none** in P00 (no game code changed) | n/a | P00 |
+| Documentation and project tooling | AI (Claude, via Claude Code) drafted the `docs/enhanced/` documents and the inventory script | Human owner chose identity, name and contact channel, and reviews before merge | P00 |
+| Translations | **none** | n/a | P00 |
+| Art/assets | **none** (placeholders only during development) | final art human-made or licensed | P00 |
+
+Upstream code by masa, Sakura-Ryoko and contributors is human-authored; see git history. Release notes summarise changes to this table.
