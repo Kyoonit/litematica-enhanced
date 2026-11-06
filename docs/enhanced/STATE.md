@@ -26,6 +26,6 @@ Run `prompts/phase-00-bootstrap-audit.md` in a new session with BASE=`baseline/s
 - Jar bytes differ between two builds of the same commit (RISK-02): compare jar contents, not jar hashes (`knowledge/build.md`, `phases/P00/logs/jar-content-compare.txt`).
 - Windows: `*.java` is CRLF in the working tree; in Git Bash use `MSYS_NO_PATHCONV=1` for `git show <ref>:.path`. curl cannot reach `masa.dy.fi` here (schannel); Gradle/Java can (`logs/repo-reachability.txt`).
 - Python is not installed; tooling is Java (`java tools/inventory/Inventory.java`) and Node for JSON checks.
-- The repository is public: before committing a log, replace the Windows user name in paths (`C:Users<name>…`) and `ls -l` owner columns with `<user>` (human decision, AUD-P00-06).
+- The repository is public: before committing a log, replace the Windows user name in home-directory paths (`C:/Users/<name>/…`, either slash) and `ls -l` owner columns with `<user>` (human decision, AUD-P00-06).
 - The hook test is `bash tools/hooks/test-guard-bash.sh` (17 cases).
 - Project agents in `.claude/agents/` load only in a session started after P00; P00 ran them as briefed general-purpose subagents.
