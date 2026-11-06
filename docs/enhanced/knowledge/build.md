@@ -13,7 +13,7 @@
 | MaLiLib | `fi.dy.masa.malilib:malilib-fabric-26.3:0.30.2` (implementation) | `build.gradle`, `gradle.properties` |
 | Bundled (JiJ) | `me.fallenbreath:conditional-mixin-fabric:0.6.4` (`include(implementation(...))`) | `build.gradle` |
 | compileOnly | ModMenu 21.0.0, Iris 1.11.6+26.3 | `build.gradle` |
-| Fabric API | **not a dependency** (all `fabricApi.module` lines are commented out) | `build.gradle` |
+| Fabric API | **not a direct dependency** (all `fabricApi.module` lines are commented out). At runtime MaLiLib 0.30.2 bundles (JiJ) and requires `fabric-api-base` 2.0.6, `fabric-networking-api-v1` 6.3.8 and `fabric-resource-loader-v1` 3.0.4 | `build.gradle`; MaLiLib jar `fabric.mod.json` and `META-INF/jars/` |
 | Gradle JVM | `-Xmx3G`, daemon off, cache cleanup off | `gradle.properties` |
 
 ## Commands
@@ -50,9 +50,9 @@ The main jar is under 5 MB, so a copy is kept at `docs/enhanced/baseline/litemat
 - **Jar bytes are not reproducible.** `preserveFileTimestamps = true` and `reproducibleFileOrder` is commented out (`build.gradle`), so two builds of the same commit give different SHA-256 values. Compare jar *contents* (sorted entry list plus per-entry hashes), not jar bytes. Changing this is a build change (ADR).
 - **Line endings.** `.gitattributes` forces `*.java` to CRLF in the working tree (316/316 files: `i/lf w/crlf`). Never run `git add --renormalize`. `fabric.mod.json` and `*.md` are LF in the repository.
 - **Mixed indentation.** Of 316 Java files, 144 have tab-indented lines, 240 have 4-space-indented lines and 72 have both (`git grep -l -P '^\t'` / `'^    '`). Match the surrounding lines; never reformat.
-- **Fabric API is not available at runtime.** Do not use `net.fabricmc.fabric.api.*` in `src/main`.
+- **Fabric API comes only through MaLiLib.** Litematica declares no Fabric API dependency, but MaLiLib bundles and requires `fabric-api-base`, `fabric-networking-api-v1` and `fabric-resource-loader-v1`. Upstream code already uses them (`network/ServuxLitematicaHandler.java:17` imports `ClientPlayNetworking`; `git grep -l 'net.fabricmc.fabric' src/main` → 1 file). Any other Fabric API module, or a direct dependency, needs an ADR (CLAUDE.md: "Fabric API is not a runtime dependency"). Corrected after pre-audit AUD-P00-03.
 - **javac notes.** "Some input files use or override a deprecated API" and "`util/PlacementHandler.java` uses unchecked or unsafe operations". Lint flags are not enabled.
-- **Gradle 10 deprecation.** "Invocation of Task.project at execution time has been deprecated" (probably from a plugin; source not identified in P00). It will fail under Gradle 10, so check it before any wrapper upgrade.
+- **Gradle 10 deprecation.** "Invocation of Task.project at execution time has been deprecated" (source: `build.gradle:79`, `expand "mod_version": project.mod_version` inside `processResources { filesMatching("fabric.mod.json") { … } }`, which calls `Task.project` at execution time; `phases/P00/logs/build-head.log`, pre-audit AUD-P00-04). It will fail under Gradle 10, so check it before any wrapper upgrade.
 - **`-dev` versions** get a timestamp suffix (`build.gradle` `base { … }`), so dev jar names change on every build.
 - **`publishing`** targets `$projectDir/../../CommonMaven` (upstream author's layout). Never run `publish` in this fork.
 - **`jitpack.yml`** pins `java 25.0.2-tem`.

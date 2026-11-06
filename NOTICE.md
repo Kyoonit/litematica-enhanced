@@ -67,3 +67,4 @@ The first time the fork modifies an upstream source file, it adds one comment li
 | File | Change | Date | Phase |
 |---|---|---|---|
 | `src/main/resources/fabric.mod.json` | Contact URLs (homepage, issues, sources) pointed to the fork; "(unofficial fork)" appended to the description | 2026-11-06 | P00 |
+| `.gitignore` | Appended a block: ignore `.claude/worktrees/` and `_dossier/`, un-ignore `docs/enhanced/phases/*/logs/` | 2026-11-06 | P00 |
