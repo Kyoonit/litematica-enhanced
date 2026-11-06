@@ -1,21 +1,29 @@
 # STATE — read me first (≤ 60 lines, overwrite, don't append)
 
-- **Current phase:** PXX — <title> — status: <todo | in-progress | in-audit | correcting | passed>
-- **Branch:** `phase/PXX-<slug>` · base tag: `enhanced/pYY-pass` (or `baseline/...`)
-- **Last verified commit:** `<sha>` — verified by: <build+tests | audit PASS> on <YYYY-MM-DD>
+- **Current phase:** P00 — Bootstrap, fork & baseline preservation — status: in-audit
+- **Branch:** `phase/P00-bootstrap` · base tag: `baseline/sakura-26.3-0.29.2-sakura.1` (= `vendor/sakura-26.3` = `64e74592`)
+- **Last verified commit:** `d5820ff3` — verified by: `./gradlew build` green in a fresh worktree (no tests exist yet) on 2026-11-06 (`phases/P00/logs/build-head.log`). Later P00 commits change only `docs/enhanced/**`.
 - **MC / loader / MaLiLib:** 26.3 / Fabric Loader 0.19.5 / 0.30.2 (update when ported)
 
 ## Next action (one line)
-<e.g. "Run prompts/phase-07-…-audit.md against phase/P07-core from enhanced/p06-pass">
+Run `prompts/phase-00-bootstrap-audit.md` in a new session with BASE=`baseline/sakura-26.3-0.29.2-sakura.1` and HEAD=`phase/P00-bootstrap`.
 
 ## Blockers / waiting on human
-- <none> | <ID — what is needed — since date>
+- RISK-06 — enable GitHub Issues on `Kyoonit/litematica-enhanced` (Settings → General → Features); the issues URL in `fabric.mod.json` points there — since 2026-11-06
+- RISK-07 / Step 8 — the fork's CI has never run: enable workflows in the fork's Actions tab, then push `phase/P00-bootstrap` (Claude pushes only with your go-ahead) — since 2026-11-06
+- Confirm that `/agents` in an interactive `claude` session lists the 12 project agents (only a file listing was possible here: `phases/P00/logs/agents-listing.txt`) — since 2026-11-06
+- RISK-01 — keep, remove or replace masa's `twitter`/`discord` entries in `fabric.mod.json` (candidate for the P03 identity ADR) — since 2026-11-06
 
 ## Open findings carried forward
-- <register IDs only, e.g. PERF-01 (P12), REL-06 (P07)>
+- All 33 STRATEGY IDs, status `to-verify (P02)`: UX-01..08, PERF-01..09, ARCH-01..07, REL-01..08, SEC-01 (`registers/problems.md`)
+- RISK-01..07 (`registers/risks.md`); RISK-02 (non-reproducible jars) → P01
 
 ## Feature flags currently experimental
-- <flag id — owner phase — default>
+- none
 
 ## Notes for the next session (≤ 10 lines)
-- …
+- Jar bytes differ between two builds of the same commit (RISK-02): compare jar contents, not jar hashes (`knowledge/build.md`, `phases/P00/logs/jar-content-compare.txt`).
+- Windows: `*.java` is CRLF in the working tree; in Git Bash use `MSYS_NO_PATHCONV=1` for `git show <ref>:.path`. curl cannot reach `masa.dy.fi` here (schannel); Gradle/Java can (`logs/repo-reachability.txt`).
+- Python is not installed; tooling is Java (`java tools/inventory/Inventory.java`) and Node for JSON checks.
+- The hook test is `bash tools/hooks/test-guard-bash.sh` (17 cases).
+- Project agents in `.claude/agents/` load only in a session started after P00; P00 ran them as briefed general-purpose subagents.
