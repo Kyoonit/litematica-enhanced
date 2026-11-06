@@ -1,6 +1,6 @@
 # P00 — Corrections round 1
 
-- **AUDIT_FILE:** `docs/enhanced/phases/P00/audit.md` (external audit, verdict FAIL; commit `a240f1bf` on branch `audit/P00`, based on the pre-rewrite `d5e52747`)
+- **AUDIT_FILE:** `docs/enhanced/phases/P00/audit.md` (external audit, verdict FAIL; commit `a240f1bf` on branch `audit/P00`, based on the pre-rewrite `d5e52747`; copied onto the phase branch as `338b6929`)
 - **FINDINGS:** AUD-P00-01..06 (all)
 - **EXTRA_NOTES (owner, 2026-11-06):** harden the hook ("Le renforcer"); rewrite the history and replace the remote branch ("Réécrire et remplacer")
 - **BASE_DELTA:** `c38f7ef2` (HEAD after the history rewrite for AUD-P00-03, before the other fixes)
@@ -34,4 +34,4 @@
 2. Then run the delta re-audit in a new session (below).
 
 ## Delta re-audit instruction
-Run the delta section of `docs/enhanced/prompts/correction-template.md` in a new session, in a detached worktree `../audit-P00-delta-1`, with AUDIT_FILE=`docs/enhanced/phases/P00/audit.md` (from `audit/P00`), BASE_DELTA=`c38f7ef2`, HEAD=`phase/P00-bootstrap`. Note: AUD-P00-03 was fixed by rewriting `baseline..c38f7ef2` itself; check it over the whole range, not only the delta.
+Run the delta section of `docs/enhanced/prompts/correction-template.md` in a new session, in a detached worktree `../audit-P00-delta-1`, with AUDIT_FILE=`docs/enhanced/phases/P00/audit.md`, BASE_DELTA=`c38f7ef2`, HEAD=`phase/P00-bootstrap`. Note: AUD-P00-03 was fixed by rewriting `baseline..c38f7ef2` itself; check it over the whole range, not only the delta.

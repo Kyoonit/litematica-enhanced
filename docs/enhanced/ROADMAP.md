@@ -2,7 +2,7 @@
 
 | # | Phase | Status | Branch | Audit verdict | Merge commit | Tag | Human checkpoint |
 |---|---|---|---|---|---|---|---|
-| P00 | Bootstrap, fork & baseline | in-audit (delta) | phase/P00-bootstrap | pre-audit: PASS WITH RESERVATIONS (`phases/P00/pre-audit.md`); external audit: FAIL (`audit/P00`), corrections round 1 done (`phases/P00/corrections.md`), delta re-audit pending | — | — | identity, owner, contact |
+| P00 | Bootstrap, fork & baseline | in-audit (delta) | phase/P00-bootstrap | pre-audit: PASS WITH RESERVATIONS (`phases/P00/pre-audit.md`); external audit: FAIL (`phases/P00/audit.md`), corrections round 1 done (`phases/P00/corrections.md`), delta re-audit pending | — | — | identity, owner, contact |
 | P01 | Test & measurement harness | todo | phase/P01-harness | — | — | — | — |
 | P02 | Deep technical & functional audit | todo | phase/P02-audit | — | — | — | review report |
 | P03 | Target architecture & migration plan | todo | phase/P03-architecture | — | — | — | ADR approval |

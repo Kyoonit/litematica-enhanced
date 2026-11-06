@@ -14,7 +14,7 @@ Delta re-audit of corrections round 1 in a new session: `prompts/correction-temp
 
 ## Open findings carried forward
 - All 33 STRATEGY IDs, status `to-verify (P02)`: UX-01..08, PERF-01..09, ARCH-01..07, REL-01..08, SEC-01 (`registers/problems.md`)
-- RISK-01..04 open, RISK-05..08 closed (`registers/risks.md`); RISK-02 (non-reproducible jars) → P01; external audit AUD-P00-01..06 (`phases/P00/audit.md` on branch `audit/P00`), response in `phases/P00/corrections.md`
+- RISK-01..04 open, RISK-05..08 closed (`registers/risks.md`); RISK-02 (non-reproducible jars) → P01; external audit AUD-P00-01..06 (`phases/P00/audit.md`), response in `phases/P00/corrections.md`
 
 ## Feature flags currently experimental
 - none
