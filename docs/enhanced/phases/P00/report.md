@@ -89,7 +89,7 @@ Verdict **PASS WITH RESERVATIONS**: 0 BLOCKER, 0 MAJOR, 4 MINOR, 6 NOTE ([pre-au
 | AUD-P00-03 build.md says Fabric API is absent at runtime | MINOR | Fixed: MaLiLib bundles three Fabric API modules, and upstream code already uses `ClientPlayNetworking` (verified in the MaLiLib 0.30.2 jar) | `knowledge/build.md` |
 | AUD-P00-04 Gradle 10 deprecation "source not identified" | MINOR | Fixed: the source is `build.gradle:79`; RISK-03 updated | `knowledge/build.md`, `registers/risks.md` |
 | AUD-P00-05 new-file count | NOTE | Fixed (146 at close-out) | this report |
-| AUD-P00-06 local user name and temp paths in committed logs | NOTE | Not changed (raw logs are evidence). Human decides before the first push | `STATE.md` |
+| AUD-P00-06 local user name and temp paths in committed logs | NOTE | Fixed at the human's request (2026-11-06): the Windows user name is replaced with `<user>` in home-directory paths and `ls -l` owner columns, in 4 logs and `pre-audit.md`; nothing else changed | `logs/`, `pre-audit.md` |
 | AUD-P00-07 NOTICE/AI disclosure gaps | NOTE | Fixed: `.gitignore` row added to NOTICE; AI disclosure lists every AI-made artefact class | `NOTICE.md`, `AI_DISCLOSURE.md` |
 | AUD-P00-08 pending human actions | NOTE | Already in STATE (no change) | `STATE.md` |
 | AUD-P00-09 identity patch checked statically only | NOTE | Optional playtest listed above | this report |
