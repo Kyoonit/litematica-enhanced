@@ -6,7 +6,7 @@
   The baseline (`64e74592`) and the phase HEAD both build green. The jars differ only in `fabric.mod.json`, which has 4 identity lines changed.
   The Claude Code kit, the `docs/enhanced/` skeleton, NOTICE/AI disclosure/licence notes, the build and architecture notes, and the seeded registers are committed.
   A reproducible Java inventory script lists 168 config options, 78 hotkeys, 9 tool modes, 26 screens, 1 command and 52 mixins. All 33 STRATEGY IDs are in `problems.md`.
-  Still open: the fork's CI has never run (human action needed), GitHub Issues are disabled on the fork, and `/agents` still needs confirming in an interactive session.
+  The fork's CI is green on the pushed branch. Still open for the human: the guardrail gaps (RISK-08) and masa's twitter/discord contacts (RISK-01).
 
 ## Acceptance criteria
 | # | Criterion (verbatim from prompt) | Status | Evidence (link) |
@@ -15,7 +15,7 @@
 | 2 | `vendor/sakura-<mc>` equals the recorded upstream HEAD sha. Tag `baseline/sakura-<mc>-<version>` points to that commit. `enhanced/main` and `phase/P00-bootstrap` exist. | met | [upstream-state.txt](logs/upstream-state.txt), [git-branches-tags.txt](logs/git-branches-tags.txt) |
 | 3 | `./gradlew build` succeeds on the baseline commit **and** on the phase branch HEAD. Logs saved; jar names and SHA-256 recorded for both. | met (HEAD = `981b0593`, pre-rewrite `d5820ff3`; later commits touch `docs/` only) | [build-baseline.log](logs/build-baseline.log), [build-baseline-env.txt](logs/build-baseline-env.txt), [baseline-jars.sha256](logs/baseline-jars.sha256), [build-head.log](logs/build-head.log), [build-head-env.txt](logs/build-head-env.txt), [head-jars.sha256](logs/head-jars.sha256), [jar-content-compare.txt](logs/jar-content-compare.txt) |
 | 4 | `git diff --stat baseline/sakura-<mc>-<version>..HEAD -- src/` shows **only** `fabric.mod.json`, and that diff touches only contact URLs and the description. | met | [scope-and-licence-checks.txt](logs/scope-and-licence-checks.txt) |
-| 5 | `CLAUDE.md`, 12 agent files, 6 rule files, a valid `settings.json` (with `worktree.baseRef = "head"` and the PreToolUse hook) and an executable `guard-bash.sh` are installed. The hook test log shows the expected exit codes for ≥ 6 payloads. | met (`/agents` listing: text only, see Deviations) | [agents-listing.txt](logs/agents-listing.txt), [settings-json-validation.log](logs/settings-json-validation.log), [hook-test.log](logs/hook-test.log), [docs-skeleton-check.txt](logs/docs-skeleton-check.txt) |
+| 5 | `CLAUDE.md`, 12 agent files, 6 rule files, a valid `settings.json` (with `worktree.baseRef = "head"` and the PreToolUse hook) and an executable `guard-bash.sh` are installed. The hook test log shows the expected exit codes for ≥ 6 payloads. | met (12/12 agents loaded by a new session) | [agents-cli-check.txt](logs/agents-cli-check.txt), [agents-listing.txt](logs/agents-listing.txt), [settings-json-validation.log](logs/settings-json-validation.log), [hook-test.log](logs/hook-test.log), [docs-skeleton-check.txt](logs/docs-skeleton-check.txt) |
 | 6 | The `docs/enhanced/` skeleton is complete as listed in Step 5. `STATE.md` and `ROADMAP.md` are filled for P00 → P01. | met | [docs-skeleton-check.txt](logs/docs-skeleton-check.txt), [STATE.md](../../STATE.md), [ROADMAP.md](../../ROADMAP.md) |
 | 7 | `NOTICE.md`, `AI_DISCLOSURE.md` and `knowledge/licence-and-contribution.md` exist. `LICENSE.txt` is byte-identical to the baseline. | met | [NOTICE.md](../../../../NOTICE.md), [AI_DISCLOSURE.md](../../AI_DISCLOSURE.md), [licence-and-contribution.md](../../knowledge/licence-and-contribution.md), [scope-and-licence-checks.txt](logs/scope-and-licence-checks.txt) |
 | 8 | The inventory script is committed, re-runs reproducibly (same output twice), and its counts are reported next to an independent grep cross-check. | met | [Inventory.java](../../../../tools/inventory/Inventory.java), [inventory-reproducibility.txt](logs/inventory-reproducibility.txt), [inventory-crosscheck.txt](logs/inventory-crosscheck.txt) |
@@ -42,7 +42,7 @@
 | Independent grep agrees with every inventory count; planning figure 175 = 168 active + 7 commented out | `grep`/`rg` | `logs/inventory-crosscheck.txt` | |
 | 33/33 STRATEGY IDs seeded, identical ID sets, every status `to-verify (P02)`, no empty confidence | `grep -o` on STRATEGY §4 and `problems.md`, `comm -3`, status/confidence column checks | `logs/problems-id-check.txt` | |
 | Architecture map: 316 files, 73,085 lines; 8 `path:line` references spot-checked by the lead | `find`/`wc`, `sed -n` | `logs/package-line-counts.txt`, `integration-log.md` | |
-| Fork CI has never run; Issues disabled on the fork | `gh api repos/Kyoonit/litematica-enhanced`, `…/actions/permissions`, `…/actions/workflows`, `…/actions/runs` | `logs/ci-and-fork-settings.txt` | Upstream CI built `26.3` green (run 38255192306) |
+| Before the push: fork CI had never run and Issues were disabled. After the owner enabled both and approved the push: CI run 42206004436 green, `has_issues=true` | `gh api …`, `git push -u origin phase/P00-bootstrap`, `gh run watch 42206004436` | `logs/ci-and-fork-settings.txt`, `logs/ci-fork-run.txt` | Upstream CI built `26.3` green (run 38255192306) |
 | Repositories reachable (HTTP 200): masa maven (MaLiLib 0.30.2), fallenbreath maven (conditional-mixin), TerraformersMC (ModMenu), Modrinth maven (Iris), Fabric maven | Java `HttpClient` probe (curl fails here: schannel) | `logs/repo-reachability.txt` | |
 
 ## Changes
@@ -59,17 +59,17 @@
 ## Deviations from the prompt (and why)
 - The project agents (`upstream-liaison`, `cartographer`, `independent-auditor`) ran as general-purpose subagents briefed with their `.claude/agents/*.md` definition and the same model. `.claude/agents/` is installed by this phase, so the running session does not load it.
 - The doc agents worked in the main checkout without worktrees: they wrote only new docs at disjoint paths and never committed (`plan.md`).
-- `/agents` cannot run in this non-interactive session, so a file listing is recorded instead. The human should confirm (STATE).
+- `/agents` cannot run in this non-interactive session. Instead, a new non-interactive session (`claude -p … --model haiku`) in the project folder listed its agent types, and all 12 project agents were loaded (`logs/agents-cli-check.txt`).
 - Python is absent, so JSON was validated with Node `JSON.parse` and the inventory script is Java (the prompt allows either).
 - The upstream `.gitignore` ignores every `logs/` directory, so P00 adds an un-ignore line for `docs/enhanced/phases/*/logs/` (`registers/upstream.md`).
 - The hook test harness lives in `tools/hooks/test-guard-bash.sh` (not named by the prompt).
 - `knowledge/build.md` was written by the lead, not a subagent (Step 4 names no owner).
-- Step 8: nothing was pushed without the human's agreement, so CI has not run on the fork (RISK-07).
+- Step 8: the branch was pushed only after the human agreed and had enabled Issues and Actions. The first fork CI run (`build`, run 42206004436, on `c03383a5`) is green (`logs/ci-fork-run.txt`).
 
 - At the human's request, the commits were re-authored before the first push (`git rebase --exec 'git commit --amend --author=…'`, no force-push). Every tree is unchanged. Logs and `pre-audit.md` written earlier cite the old ids; see `logs/commit-rewrite-map.txt`.
 
 ## Known limitations / open items (register IDs)
-- RISK-01 masa's twitter/discord contacts · RISK-02 non-reproducible jars (P01) · RISK-03 Gradle 10 deprecation · RISK-04 MaLiLib 0.30.2 untagged · RISK-05 warm cache · RISK-06 Issues disabled · RISK-07 fork CI never run · RISK-08 guardrail gaps (hook patterns, PowerShell tool).
+- RISK-01 masa's twitter/discord contacts · RISK-02 non-reproducible jars (P01) · RISK-03 Gradle 10 deprecation · RISK-04 MaLiLib 0.30.2 untagged · RISK-05/06/07 closed (cold CI build green, Issues enabled) · RISK-08 guardrail gaps (hook patterns, PowerShell tool).
 - All 33 problem IDs are `to-verify (P02)`. Licence-portal rules (Modrinth/CurseForge) were taken from the dossier, not re-fetched; re-check at P19.
 
 ## Rollback plan

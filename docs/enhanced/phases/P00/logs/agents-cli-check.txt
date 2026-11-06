@@ -1,0 +1,43 @@
+# Agents loaded by a new Claude Code session in the project folder — 2026-11-06T10:53:19Z — HEAD c03383a5
+# Replaces the interactive /agents check (the human could not run /agents from cmd.exe; it must be typed inside 'claude').
+# command: claude -p "Without using any tool, list the exact names of every subagent type you can launch with the Agent tool ..., one per line, nothing else." --model haiku
+# raw output (exit 0):
+Permission deny rule (.claude\settings.json): Write(./LICENSE.txt) is not matched by file permission checks — only Edit(path) rules are. Use Edit(./LICENSE.txt) instead (Edit rules cover all file-editing tools).
+architect
+cartographer
+claude
+claude-code-guide
+doc-writer
+executant-commandes
+Explore
+feature-designer
+general-purpose
+independent-auditor
+lecteur-rapide
+perf-engineer
+Plan
+redacteur-courant
+relecteur-chiffres
+reliability-engineer
+statusline-setup
+test-engineer
+ui-engineer
+upstream-liaison
+ux-designer
+web-fetch
+
+# project agents (.claude/agents/*.md 'name:') found in the output:
+found    Explore
+found    architect
+found    cartographer
+found    doc-writer
+found    feature-designer
+found    independent-auditor
+found    perf-engineer
+found    reliability-engineer
+found    test-engineer
+found    ui-engineer
+found    upstream-liaison
+found    ux-designer
+project agents found: 12 / 12
+# other names are Claude Code built-ins or the user's personal agents (~/.claude/agents/).

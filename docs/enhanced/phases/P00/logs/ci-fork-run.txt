@@ -1,0 +1,9 @@
+# Fork CI after the first push of phase/P00-bootstrap — 2026-11-06T10:54:17Z
+# push: git push -u origin phase/P00-bootstrap (human-approved 2026-11-06), head c03383a5
+## gh run watch 42206004436 --exit-status; gh run view 42206004436 --json ...
+exit=0
+{"conclusion":"success","createdAt":"2026-11-06T10:52:47Z","event":"push","headSha":"c03383a57293133e5cfa7b8a8e5f53e2bb1a01c9","jobs":[{"conclusion":"success","name":"build (25, temurin, ubuntu-latest)","steps":["Set up job: success","checkout repository: success","validate gradle wrapper: success","setup jdk 25: success","setup gradle: success","make gradle wrapper executable: success","build: success","capture build artifacts: success","Post setup gradle: success","Post setup jdk 25: success","Post checkout repository: success","Complete job: success"]}],"status":"completed","updatedAt":"2026-11-06T10:53:50Z","url":"https://github.com/Kyoonit/litematica-enhanced/actions/runs/42206004436"}
+## gh api repos/Kyoonit/litematica-enhanced (has_issues) and actions/workflows
+has_issues=true
+workflows=1 .github/workflows/build.yml:active
+## note: first run on the fork, so setup-gradle had no cache to restore (logs/ci-and-fork-settings.txt shows 0 earlier runs): every dependency, MaLiLib 0.30.2 included, was resolved without a Gradle cache
