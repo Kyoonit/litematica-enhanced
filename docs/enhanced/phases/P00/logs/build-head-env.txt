@@ -1,0 +1,10 @@
+# java -version
+openjdk version "25.0.5" 2026-10-20 LTS
+OpenJDK Runtime Environment Temurin-25.0.5+8 (build 25.0.5+8-LTS)
+OpenJDK 64-Bit Server VM Temurin-25.0.5+8 (build 25.0.5+8-LTS, mixed mode, sharing)
+# phase HEAD commit: d5820ff34d93817dc2b847367fdae0405237aac9 (fresh detached worktree)
+# start: 2026-11-06T10:16:56Z
+# end: 2026-11-06T10:17:11Z
+exit=0 duration_s=15
+-rw-r--r-- 1 <user> 197609 1198098 Nov  6 11:17 litematica-fabric-26.3-0.29.2-sakura.1-sources.jar
+-rw-r--r-- 1 <user> 197609 1976023 Nov  6 11:17 litematica-fabric-26.3-0.29.2-sakura.1.jar

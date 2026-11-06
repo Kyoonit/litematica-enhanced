@@ -1,0 +1,75 @@
+# Scope and licence checks — 2026-11-06T10:16:55Z — HEAD d5820ff3
+
+## git diff --stat baseline/sakura-26.3-0.29.2-sakura.1..HEAD -- src/
+ src/main/resources/fabric.mod.json | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+## git diff baseline/sakura-26.3-0.29.2-sakura.1..HEAD -- src/
+diff --git a/src/main/resources/fabric.mod.json b/src/main/resources/fabric.mod.json
+index 1a8e1ed3..102c0819 100644
+--- a/src/main/resources/fabric.mod.json
++++ b/src/main/resources/fabric.mod.json
+@@ -3,7 +3,7 @@
+     "id": "litematica",
+     "name": "Litematica",
+     "version": "${mod_version}",
+-    "description": "A modern schematic mod for LiteLoader, Rift, Fabric etc.",
++    "description": "A modern schematic mod for LiteLoader, Rift, Fabric etc. (unofficial fork)",
+     "authors": [
+         "masa"
+     ],
+@@ -11,9 +11,9 @@
+         "Sakura-Ryoko"
+     ],
+     "contact": {
+-        "homepage": "https://www.curseforge.com/minecraft/mc-mods/litematica",
+-        "issues": "https://github.com/maruohon/litematica/issues",
+-        "sources": "https://github.com/maruohon/litematica",
++        "homepage": "https://github.com/Kyoonit/litematica-enhanced",
++        "issues": "https://github.com/Kyoonit/litematica-enhanced/issues",
++        "sources": "https://github.com/Kyoonit/litematica-enhanced",
+         "twitter": "https://twitter.com/maruohon",
+         "discord": "https://discordapp.com/channels/211786369951989762/453662800460644354/"
+     },
+
+## git diff --quiet baseline/sakura-26.3-0.29.2-sakura.1..HEAD -- LICENSE.txt
+no change in history (exit 0)
+blob ids: baseline 65c5ca88a67c30becee01c5a8816d964b03862f9 HEAD 65c5ca88a67c30becee01c5a8816d964b03862f9
+
+## files changed baseline/sakura-26.3-0.29.2-sakura.1..HEAD outside docs/ (name-status)
+A	.claude/agents/Explore.md
+A	.claude/agents/architect.md
+A	.claude/agents/cartographer.md
+A	.claude/agents/doc-writer.md
+A	.claude/agents/feature-designer.md
+A	.claude/agents/independent-auditor.md
+A	.claude/agents/perf-engineer.md
+A	.claude/agents/reliability-engineer.md
+A	.claude/agents/test-engineer.md
+A	.claude/agents/ui-engineer.md
+A	.claude/agents/upstream-liaison.md
+A	.claude/agents/ux-designer.md
+A	.claude/hooks/guard-bash.sh
+A	.claude/rules/gui.md
+A	.claude/rules/mixins.md
+A	.claude/rules/network-fairness.md
+A	.claude/rules/rendering-threading.md
+A	.claude/rules/schematic-io.md
+A	.claude/rules/tests-benchmarks.md
+A	.claude/settings.json
+M	.gitignore
+A	CLAUDE.md
+A	NOTICE.md
+M	src/main/resources/fabric.mod.json
+A	tools/hooks/test-guard-bash.sh
+A	tools/inventory/Inventory.java
+## cmp LICENSE.txt — corrected method
+# A first attempt compared the CRLF working-tree file with the LF output of 'git show' and reported 'differ: char 53, line 1': a line-ending artefact of core.autocrlf=true, not a content change.
+# 1) repository blobs (exact bytes stored in git):
+cmp baseline blob vs HEAD blob: identical (exit 0)
+# 2) working trees (both checked out with the same autocrlf settings): main checkout vs fresh baseline worktree
+cmp working-tree LICENSE.txt vs baseline-worktree LICENSE.txt: identical (exit 0)
+da7eabb7bafdf7d3ae5e9f223aa5bdc1eece45ac569dc21b3b037520b4464768 *lic-base.blob
+da7eabb7bafdf7d3ae5e9f223aa5bdc1eece45ac569dc21b3b037520b4464768 *lic-head.blob
+ea7d049c7705dc13afc202dd18e1827f3484f8212fd3fa7b82fc4a0c363432c9 *LICENSE.txt
+ea7d049c7705dc13afc202dd18e1827f3484f8212fd3fa7b82fc4a0c363432c9 *baseline-wt/LICENSE.txt

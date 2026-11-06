@@ -1,0 +1,15 @@
+# CI and fork settings (read-only GitHub API via gh, account Kyoonit) — 2026-11-06T10:17:48Z
+## gh api repos/Kyoonit/litematica-enhanced (selected fields)
+{"default_branch":"26.3","fork":true,"full_name":"Kyoonit/litematica-enhanced","has_issues":false,"parent":"sakura-ryoko/litematica","pushed_at":"2026-10-29T20:32:48Z","visibility":"public"}
+## gh api repos/Kyoonit/litematica-enhanced/actions/permissions
+{"enabled":true,"allowed_actions":"all","sha_pinning_required":false}
+## gh api repos/Kyoonit/litematica-enhanced/actions/workflows
+{"total_count":0,"workflows":[]}
+## gh run list -R Kyoonit/litematica-enhanced --limit 5
+(empty = no workflow run on the fork yet)
+## gh run list -R sakura-ryoko/litematica --branch 26.3 --limit 3 (upstream CI on the baseline branch)
+completed	action_required	refactor SchematicConversionFixers to only run them for a given version range	build	26.3	pull_request	40056596483	0s	2026-10-24T03:01:25Z
+completed	action_required	refactor SchematicConversionFixers to only run them for a given version range	build	26.3	pull_request	39539021056	0s	2026-10-21T03:31:13Z
+completed	success	Translated using Weblate (Chinese (Traditional Han script))	build	26.3	push	38255192306	1m6s	2026-10-12T13:22:05Z
+## remote branches on origin
+64e74592f631cfa5b084bedb0eda5dac8a3b3cb8	refs/heads/26.3
