@@ -10,3 +10,7 @@ build.number
 .idea/
 run/
 libs/
+
+# Litematica Enhanced (P00)
+.claude/worktrees/
+_dossier/
