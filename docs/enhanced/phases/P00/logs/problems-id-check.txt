@@ -1,0 +1,16 @@
+# STRATEGY §4 finding IDs vs registers/problems.md — 2026-11-06T10:22:51Z — HEAD 08672ecf
+# source: sed -n '124,201p' docs/enhanced/STRATEGY.md (§4 'Findings by axis', up to §5)
+STRATEGY §4 distinct IDs: 33
+problems.md rows: 33 (distinct: 33)
+# comm -3 strategy register (empty = identical sets):
+(end)
+# rows whose Status column is not 'to-verify (P02)':
+(end)
+# rows with an empty Confidence column:
+(end)
+# IDs by prefix:
+      7 ARCH
+      9 PERF
+      8 REL
+      1 SEC
+      8 UX

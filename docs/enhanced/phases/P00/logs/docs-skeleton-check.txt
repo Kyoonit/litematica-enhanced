@@ -1,0 +1,56 @@
+# docs/enhanced skeleton check (Step 5 list) — 2026-11-06T10:21:25Z — HEAD 08672ecf
+# each path checked with git ls-files (tracked) — 'ok' or 'MISSING'
+ok       CLAUDE.md
+ok       .claude/settings.json
+ok       .claude/hooks/guard-bash.sh
+ok       docs/enhanced/STATE.md
+ok       docs/enhanced/ROADMAP.md
+ok       docs/enhanced/DECISIONS.md
+ok       docs/enhanced/AI_DISCLOSURE.md
+ok       docs/enhanced/README.md
+ok       docs/enhanced/registers/problems.md
+ok       docs/enhanced/registers/features.md
+ok       docs/enhanced/registers/risks.md
+ok       docs/enhanced/registers/upstream.md
+ok       docs/enhanced/knowledge/mixin-register.md
+ok       docs/enhanced/benchmarks/PROTOCOL.md
+ok       docs/enhanced/STRATEGY.md
+ok       docs/enhanced/ROADMAP-PLAN.md
+ok       docs/enhanced/REFERENCE.md
+ok       docs/enhanced/AGENTS.md
+ok       docs/enhanced/UPSTREAM.md
+ok       docs/enhanced/adr/.gitkeep
+ok       docs/enhanced/knowledge/subsystems/.gitkeep
+ok       docs/enhanced/benchmarks/scenarios/.gitkeep
+ok       docs/enhanced/benchmarks/results/.gitkeep
+ok       docs/enhanced/design/.gitkeep
+ok       docs/enhanced/specs/.gitkeep
+ok       docs/enhanced/compat/.gitkeep
+ok       docs/enhanced/phases/.gitkeep
+ok       docs/enhanced/upstream-prs/.gitkeep
+ok       docs/enhanced/architecture/.gitkeep
+
+# templates: dossier vs docs/enhanced/templates (diff -rq, CRLF-insensitive via --strip-trailing-cr)
+(identical)
+templates tracked: 20
+
+# prompts: dossier vs docs/enhanced/prompts
+(identical)
+prompts tracked: 45
+
+# strategy docs: dossier source vs copy
+identical  01-strategic-analysis.md -> STRATEGY.md
+identical  02-roadmap.md -> ROADMAP-PLAN.md
+identical  03-reference-documentation.md -> REFERENCE.md
+identical  04-agent-operating-model.md -> AGENTS.md
+identical  05-github-contribution-strategy.md -> UPSTREAM.md
+
+# kit files: dossier vs repo
+identical  CLAUDE.md
+identical  .claude/
+
+# index modes of executable scripts
+100755 33a60336c7fef0408e0c0b9ae2101cf3f336fa0b 0	.claude/hooks/guard-bash.sh
+100755 86858ff454575385cb395b25fae0f6cd7054c982 0	tools/hooks/test-guard-bash.sh
+
+missing: 0
