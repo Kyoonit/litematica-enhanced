@@ -1,0 +1,28 @@
+# find src/main/java/fi/dy/masa/litematica -mindepth 1 -maxdepth 1 -type d (per package) + extra subpackages; recursive counts; root-level .java files counted separately
+3 files 124 lines src/main/java/fi/dy/masa/litematica (root-level files)
+1 files 137 lines src/main/java/fi/dy/masa/litematica/command
+6 files 361 lines src/main/java/fi/dy/masa/litematica/compat
+2 files 801 lines src/main/java/fi/dy/masa/litematica/config
+4 files 2145 lines src/main/java/fi/dy/masa/litematica/data
+5 files 1312 lines src/main/java/fi/dy/masa/litematica/event
+49 files 10956 lines src/main/java/fi/dy/masa/litematica/gui
+6 files 356 lines src/main/java/fi/dy/masa/litematica/interfaces
+20 files 4392 lines src/main/java/fi/dy/masa/litematica/materials
+53 files 2032 lines src/main/java/fi/dy/masa/litematica/mixin
+2 files 1010 lines src/main/java/fi/dy/masa/litematica/network
+51 files 12136 lines src/main/java/fi/dy/masa/litematica/render
+24 files 4334 lines src/main/java/fi/dy/masa/litematica/scheduler
+39 files 17381 lines src/main/java/fi/dy/masa/litematica/schematic
+7 files 2087 lines src/main/java/fi/dy/masa/litematica/selection
+2 files 187 lines src/main/java/fi/dy/masa/litematica/tool
+34 files 11321 lines src/main/java/fi/dy/masa/litematica/util
+8 files 2013 lines src/main/java/fi/dy/masa/litematica/world
+38 files 8991 lines src/main/java/fi/dy/masa/litematica/render/schematic
+14 files 5115 lines src/main/java/fi/dy/masa/litematica/schematic/placement
+6 files 941 lines src/main/java/fi/dy/masa/litematica/schematic/container
+2 files 1146 lines src/main/java/fi/dy/masa/litematica/schematic/verifier
+21 files 3664 lines src/main/java/fi/dy/masa/litematica/gui/widgets
+53 files 2032 lines src/main/java/fi/dy/masa/litematica/mixin
+# totals
+316
+73085
