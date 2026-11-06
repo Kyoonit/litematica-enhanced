@@ -1,0 +1,31 @@
+# Inventory reproducibility — 2026-11-06T10:14:23Z — commit 3184a6ec (+ working tree: tools/inventory/Inventory.java, registers/features.md)
+# run 1: java tools/inventory/Inventory.java
+Updated docs/enhanced/registers/features.md
+Counts:
+  config options: 168
+    of which ConfigBooleanHotkeyed (also bindable): 28
+  hotkeys (ConfigHotkey): 78
+  declarations not in an ImmutableList.of(...) list: 1
+  commented-out config declarations (dormant, not counted): 7
+  tool modes: 9
+  GUI screen classes: 26
+    concrete: 22
+    abstract: 4
+  client commands: 1
+  mixin classes (@Mixin): 52
+  mixin entries in mixins.litematica.json: 52
+  distinct mixin targets: 47
+  injector annotations (@Inject/@Redirect/@Modify*/@Wrap*/@Overwrite): 50
+  config options by category: {Colors=11, Generic=87, InfoOverlays=27, Visuals=43}
+# run 2: java tools/inventory/Inventory.java
+Updated docs/enhanced/registers/features.md
+# run 3: java tools/inventory/Inventory.java --stdout (generated section only)
+# diff run1 run2 (whole features.md):
+(empty: identical)
+# diff run3 --stdout section vs section in file:
+(empty: identical)
+# sha256 (run1, run2, stdout section, file section):
+900429d747b779e90c4dfbe71267f1b73b59c6d42c3d6687726a76f70f8043d5 *features-run1.md
+900429d747b779e90c4dfbe71267f1b73b59c6d42c3d6687726a76f70f8043d5 *features-run2.md
+82bef396de84dd2610a75953514b20922f9b9401acf6238867dceeb99b0743d7 *section-stdout.md
+82bef396de84dd2610a75953514b20922f9b9401acf6238867dceeb99b0743d7 *section-file.md

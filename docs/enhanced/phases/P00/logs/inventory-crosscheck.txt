@@ -1,0 +1,39 @@
+# Independent grep cross-check of the inventory counts — 2026-11-06T10:14:44Z
+# Each count uses plain grep/sed (no shared code with Inventory.java).
+
+config options (non-commented 'new Config*("' lines in Configs.java): 168
+  command: grep -E 'new Config[A-Za-z]+\( *"' config/Configs.java | grep -vE '^\s*//' | wc -l
+config declaration lines including commented-out: 175 (planning figure '175' = this count)
+  Generic: 87
+  Visuals: 43
+  InfoOverlays: 27
+  Colors: 11
+hotkeys (non-commented 'new ConfigHotkey("' in Hotkeys.java): 78
+ConfigBooleanHotkeyed in Configs.java: 28
+tool modes (enum constants in tool/ToolMode.java): 9
+classes named Gui* with 'extends' on the declaration line: 26
+  (semantics differ slightly from the script, which follows the superclass chain to MaLiLib Gui* / vanilla Screen roots regardless of the class name)
+files with a class directly extending GuiBase/GuiListBase/GuiConfigsBase/Screen: 16
+client command registrations (registerCommand( call sites): 1
+files under mixin/ with a line starting '@Mixin' (non-commented): 52
+files under mixin/ mentioning @Mixin at all (incl. commented-out): 53
+entries in mixins.litematica.json (mixins+client+server arrays): 52 (common 23, client 29, server 0)  [regex [A-Za-z0-9_] — a first attempt without '_' and digits gave 48 and was wrong]
+injector annotations at line start (non-commented): 50
+
+# Script counts (from inventory-reproducibility.txt run 1):
+Counts:
+  config options: 168
+    of which ConfigBooleanHotkeyed (also bindable): 28
+  hotkeys (ConfigHotkey): 78
+  declarations not in an ImmutableList.of(...) list: 1
+  commented-out config declarations (dormant, not counted): 7
+  tool modes: 9
+  GUI screen classes: 26
+    concrete: 22
+    abstract: 4
+  client commands: 1
+  mixin classes (@Mixin): 52
+  mixin entries in mixins.litematica.json: 52
+  distinct mixin targets: 47
+  injector annotations (@Inject/@Redirect/@Modify*/@Wrap*/@Overwrite): 50
+  config options by category: {Colors=11, Generic=87, InfoOverlays=27, Visuals=43}
