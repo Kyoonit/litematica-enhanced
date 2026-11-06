@@ -1,0 +1,101 @@
+# guard-bash.sh hook test — 2026-11-06T11:20:18Z
+# hook: .claude/hooks/guard-bash.sh (blob c75df5dad92295096f5467c2fb71053b29bb3908) @ c38f7ef2 (branch phase/P00-bootstrap)
+## Shipped cases — dangerous (expected 2)
+PASS  Bash       expected=2 actual=2  force push (--force)               | git push --force origin phase/P00-bootstrap
+PASS  Bash       expected=2 actual=2  force push (-f)                    | git push -f origin phase/P00-bootstrap
+PASS  Bash       expected=2 actual=2  force push (--force-with-lease)    | git push --force-with-lease origin enhanced/main
+PASS  Bash       expected=2 actual=2  push to upstream-sakura            | git push upstream-sakura phase/P00-bootstrap
+PASS  Bash       expected=2 actual=2  push to upstream-masa              | git push upstream-masa HEAD:ornithe/1.12.2
+PASS  Bash       expected=2 actual=2  reset --hard                       | git reset --hard HEAD~1
+PASS  Bash       expected=2 actual=2  tag deletion enhanced/x            | git tag -d enhanced/x
+PASS  Bash       expected=2 actual=2  tag deletion baseline/*            | git tag --delete baseline/sakura-26.3-0.29.2-sakura.1
+PASS  Bash       expected=2 actual=2  branch -D vendor/*                 | git branch -D vendor/sakura-26.3
+PASS  Bash       expected=2 actual=2  rm -rf .git                        | rm -rf .git
+PASS  Bash       expected=2 actual=2  add --renormalize                  | git add --renormalize .
+## Auditor probes — bypasses (expected 2)
+PASS  Bash       expected=2 actual=2  +refspec                           | git push origin +main
+PASS  Bash       expected=2 actual=2  --force-with-lease, no args        | git push --force-with-lease
+PASS  Bash       expected=2 actual=2  -C before reset --hard             | git -C . reset --hard
+PASS  Bash       expected=2 actual=2  +HEAD:refspec                      | git push origin +HEAD:enhanced/main
+PASS  Bash       expected=2 actual=2  -fu cluster                        | git push -fu origin main
+PASS  Bash       expected=2 actual=2  --force after refspec              | git push origin main --force
+PASS  Bash       expected=2 actual=2  -f after refspec                   | git push origin main -f
+PASS  Bash       expected=2 actual=2  quoted remote                      | git push "origin" --force
+PASS  Bash       expected=2 actual=2  quoted --hard                      | git reset "--hard" HEAD~1
+PASS  Bash       expected=2 actual=2  --forc prefix                      | git push --forc origin main
+PASS  Bash       expected=2 actual=2  --har prefix                       | git reset --har HEAD~1
+PASS  Bash       expected=2 actual=2  push to sakura URL                 | git push https://github.com/sakura-ryoko/litematica.git HEAD:26.3
+PASS  Bash       expected=2 actual=2  branch --delete --force            | git branch --delete --force enhanced/main
+PASS  Bash       expected=2 actual=2  update-ref -d protected            | git update-ref -d refs/heads/enhanced/main
+PASS  Bash       expected=2 actual=2  tag -f baseline                    | git tag -f baseline/sakura-26.3-0.29.2-sakura.1 HEAD
+PASS  Bash       expected=2 actual=2  :refspec deletes tag               | git push origin :refs/tags/baseline/sakura-26.3-0.29.2-sakura.1
+PASS  Bash       expected=2 actual=2  compound cd && force               | cd /c/repo && git push --force origin x
+## New rules (expected 2)
+PASS  Bash       expected=2 actual=2  single-quoted --force              | git push origin 'main' '--force'
+PASS  Bash       expected=2 actual=2  --mirror                           | git push --mirror origin
+PASS  Bash       expected=2 actual=2  --delete branch                    | git push origin --delete phase/P00-bootstrap
+PASS  Bash       expected=2 actual=2  --prune                            | git push --prune origin refs/heads/*:refs/heads/*
+PASS  Bash       expected=2 actual=2  --repo=upstream-masa               | git push --repo=upstream-masa main
+PASS  Bash       expected=2 actual=2  env wrapper                        | env GIT_TRACE=1 git push -f origin main
+PASS  Bash       expected=2 actual=2  bash -c wrapper                    | bash -c 'git reset --hard'
+PASS  Bash       expected=2 actual=2  subshell                           | (git push --force origin main)
+PASS  Bash       expected=2 actual=2  newline-separated                  | git status
+git push -f origin main
+PASS  Bash       expected=2 actual=2  -c alias definition                | git -c alias.p=push p --force
+PASS  Bash       expected=2 actual=2  config alias                       | git config alias.yolo 'push --force'
+PASS  Bash       expected=2 actual=2  set pushurl                        | git config remote.upstream-masa.pushurl https://github.com/maruohon/litematica.git
+PASS  Bash       expected=2 actual=2  remote set-url --push              | git remote set-url --push upstream-sakura https://github.com/sakura-ryoko/litematica.git
+PASS  Bash       expected=2 actual=2  clean -fdx                         | git clean -fdx
+PASS  Bash       expected=2 actual=2  clean -X                           | git clean -fX
+PASS  Bash       expected=2 actual=2  branch -M onto enhanced/main       | git branch -M enhanced/main
+PASS  Bash       expected=2 actual=2  branch -f vendor                   | git branch -f vendor/sakura-26.3 HEAD
+PASS  Bash       expected=2 actual=2  update-ref baseline tag            | git update-ref refs/tags/baseline/x HEAD
+PASS  Bash       expected=2 actual=2  rm -rf _dossier                    | rm -rf _dossier
+PASS  Bash       expected=2 actual=2  rm -rf ~                           | rm -rf ~
+PASS  Bash       expected=2 actual=2  rm -r ..                           | rm -r ..
+PASS  Bash       expected=2 actual=2  rm -rf *                           | rm -rf *
+PASS  Bash       expected=2 actual=2  rm -rf absolute                    | rm -rf /c/Users
+PASS  Bash       expected=2 actual=2  redirect into LICENSE              | echo x > LICENSE.txt
+PASS  Bash       expected=2 actual=2  sed -i LICENSE                     | sed -i s/LGPL/MIT/ LICENSE.txt
+PASS  Bash       expected=2 actual=2  rm LICENSE                         | rm LICENSE.txt
+PASS  Bash       expected=2 actual=2  mv over LICENSE                    | mv other.txt LICENSE.txt
+PASS  Bash       expected=2 actual=2  tee LICENSE                        | echo x | tee LICENSE.txt
+PASS  Bash       expected=2 actual=2  JSON-escaped backslash path        | rm -rf C:\Users
+## Normal commands (expected 0)
+PASS  Bash       expected=0 actual=0  normal build                       | ./gradlew build
+PASS  Bash       expected=0 actual=0  normal commit on phase branch      | git commit -m '[P00] docs: add phase plan'
+PASS  Bash       expected=0 actual=0  normal push to origin              | git push origin phase/P00-bootstrap
+PASS  Bash       expected=0 actual=0  push -u to origin                  | git push -u origin phase/P00-bootstrap
+PASS  Bash       expected=0 actual=0  push upstream-pr branch            | git push origin upstream-pr/fix-x
+PASS  Bash       expected=0 actual=0  normal status                      | git status --short
+PASS  Bash       expected=0 actual=0  rm -rf build outputs               | rm -rf build
+PASS  Bash       expected=0 actual=0  rm -rf run/logs                    | rm -rf run/logs
+PASS  Bash       expected=0 actual=0  read pushurl                       | git config --get-all remote.upstream-sakura.pushurl
+PASS  Bash       expected=0 actual=0  log range                          | git log --oneline origin/main..HEAD
+PASS  Bash       expected=0 actual=0  compound read-only (AUD-P00-05)    | git config --get-all remote.upstream-sakura.pushurl; git remote -v | grep upstream-masa; git reset --soft HEAD
+PASS  Bash       expected=0 actual=0  reset --soft                       | git reset --soft HEAD~1
+PASS  Bash       expected=0 actual=0  create pass tag                    | git tag enhanced/p00-pass
+PASS  Bash       expected=0 actual=0  list tags                          | git tag -l baseline/*
+PASS  Bash       expected=0 actual=0  new phase branch                   | git branch phase/P01-harness enhanced/main
+PASS  Bash       expected=0 actual=0  delete phase branch                | git branch -d phase/old
+PASS  Bash       expected=0 actual=0  clean -n                           | git clean -nd
+PASS  Bash       expected=0 actual=0  grep for --force text              | grep -n 'force' docs/enhanced/REFERENCE.md
+PASS  Bash       expected=0 actual=0  read LICENSE                       | head -n 5 LICENSE.txt
+PASS  Bash       expected=0 actual=0  diff LICENSE                       | git diff --stat -- LICENSE.txt
+PASS  Bash       expected=0 actual=0  remote add upstream-*              | git remote add upstream-x https://github.com/sakura-ryoko/litematica.git
+## PowerShell tool (AUD-P00-02)
+PASS  PowerShell expected=2 actual=2  PS force push                      | git push --force origin main
+PASS  PowerShell expected=2 actual=2  PS reset --hard; chained           | git status; if ($?) { git reset --hard HEAD~1 }
+PASS  PowerShell expected=2 actual=2  PS Remove-Item -Recurse .git       | Remove-Item -Recurse -Force .git
+PASS  PowerShell expected=2 actual=2  PS Remove-Item drive path          | Remove-Item -Recurse C:\Users\x
+PASS  PowerShell expected=2 actual=2  PS Set-Content LICENSE             | Set-Content -Path LICENSE.txt -Value x
+PASS  PowerShell expected=2 actual=2  PS Out-File LICENSE                | 'x' | Out-File LICENSE.txt
+PASS  PowerShell expected=2 actual=2  PS & git call                      | & git push upstream-masa main
+PASS  PowerShell expected=0 actual=0  PS build                           | .\gradlew.bat build
+PASS  PowerShell expected=0 actual=0  PS Remove-Item build               | Remove-Item -Recurse -Force build
+PASS  PowerShell expected=0 actual=0  PS read LICENSE                    | Get-Content LICENSE.txt -TotalCount 5
+PASS  PowerShell expected=0 actual=0  PS push to origin                  | git push origin phase/P00-bootstrap
+## Vendor branch commit (expected 2)
+PASS  Bash       expected=2 actual=2  commit on vendor/sakura-26.3       | git commit -m 'should be blocked'
+PASS  Bash       expected=2 actual=2  commit via -C on vendor wt         | git -C /tmp/tmp.YOW79CTnvQ/vendor-wt commit -m 'should be blocked'
+# cases: 91, result: ALL PASS

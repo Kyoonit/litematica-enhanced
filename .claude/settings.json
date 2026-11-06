@@ -26,8 +26,10 @@
       "Bash(git push --force*)",
       "Bash(git push -f*)",
       "Bash(git push upstream-*)",
-      "Edit(./LICENSE.txt)",
-      "Write(./LICENSE.txt)"
+      "PowerShell(git push --force*)",
+      "PowerShell(git push -f*)",
+      "PowerShell(git push upstream-*)",
+      "Edit(./LICENSE.txt)"
     ]
   },
   "env": {
@@ -39,7 +41,7 @@
   "hooks": {
     "PreToolUse": [
       {
-        "matcher": "Bash",
+        "matcher": "Bash|PowerShell",
         "hooks": [
           {
             "type": "command",
