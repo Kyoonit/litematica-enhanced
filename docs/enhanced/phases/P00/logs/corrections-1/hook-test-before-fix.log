@@ -1,0 +1,37 @@
+# Reproduction: the round-1 harness (91 cases) run against the hook at c38f7ef2 (before the fix)
+FAIL  Bash       expected=2 actual=0  +refspec                           | git push origin +main
+FAIL  Bash       expected=2 actual=0  +HEAD:refspec                      | git push origin +HEAD:enhanced/main
+FAIL  Bash       expected=2 actual=0  -fu cluster                        | git push -fu origin main
+FAIL  Bash       expected=2 actual=0  quoted remote                      | git push "origin" --force
+FAIL  Bash       expected=2 actual=0  quoted --hard                      | git reset "--hard" HEAD~1
+FAIL  Bash       expected=2 actual=0  --forc prefix                      | git push --forc origin main
+FAIL  Bash       expected=2 actual=0  --har prefix                       | git reset --har HEAD~1
+FAIL  Bash       expected=2 actual=0  push to sakura URL                 | git push https://github.com/sakura-ryoko/litematica.git HEAD:26.3
+FAIL  Bash       expected=2 actual=0  branch --delete --force            | git branch --delete --force enhanced/main
+FAIL  Bash       expected=2 actual=0  update-ref -d protected            | git update-ref -d refs/heads/enhanced/main
+FAIL  Bash       expected=2 actual=0  tag -f baseline                    | git tag -f baseline/sakura-26.3-0.29.2-sakura.1 HEAD
+FAIL  Bash       expected=2 actual=0  --mirror                           | git push --mirror origin
+FAIL  Bash       expected=2 actual=0  --delete branch                    | git push origin --delete phase/P00-bootstrap
+FAIL  Bash       expected=2 actual=0  --prune                            | git push --prune origin refs/heads/*:refs/heads/*
+FAIL  Bash       expected=2 actual=0  set pushurl                        | git config remote.upstream-masa.pushurl https://github.com/maruohon/litematica.git
+FAIL  Bash       expected=2 actual=0  clean -fdx                         | git clean -fdx
+FAIL  Bash       expected=2 actual=0  clean -X                           | git clean -fX
+FAIL  Bash       expected=2 actual=0  branch -M onto enhanced/main       | git branch -M enhanced/main
+FAIL  Bash       expected=2 actual=0  branch -f vendor                   | git branch -f vendor/sakura-26.3 HEAD
+FAIL  Bash       expected=2 actual=0  update-ref baseline tag            | git update-ref refs/tags/baseline/x HEAD
+FAIL  Bash       expected=2 actual=0  rm -rf _dossier                    | rm -rf _dossier
+FAIL  Bash       expected=2 actual=0  rm -rf *                           | rm -rf *
+FAIL  Bash       expected=2 actual=0  redirect into LICENSE              | echo x > LICENSE.txt
+FAIL  Bash       expected=2 actual=0  sed -i LICENSE                     | sed -i s/LGPL/MIT/ LICENSE.txt
+FAIL  Bash       expected=2 actual=0  rm LICENSE                         | rm LICENSE.txt
+FAIL  Bash       expected=2 actual=0  mv over LICENSE                    | mv other.txt LICENSE.txt
+FAIL  Bash       expected=2 actual=0  tee LICENSE                        | echo x | tee LICENSE.txt
+FAIL  Bash       expected=2 actual=0  JSON-escaped backslash path        | rm -rf C:\Users
+FAIL  Bash       expected=0 actual=2  push upstream-pr branch            | git push origin upstream-pr/fix-x
+FAIL  Bash       expected=0 actual=2  compound read-only (AUD-P00-05)    | git config --get-all remote.upstream-sakura.pushurl; git remote -v | grep upstream-masa; git reset --soft HEAD
+FAIL  PowerShell expected=2 actual=0  PS Remove-Item -Recurse .git       | Remove-Item -Recurse -Force .git
+FAIL  PowerShell expected=2 actual=0  PS Remove-Item drive path          | Remove-Item -Recurse C:\Users\x
+FAIL  PowerShell expected=2 actual=0  PS Set-Content LICENSE             | Set-Content -Path LICENSE.txt -Value x
+FAIL  PowerShell expected=2 actual=0  PS Out-File LICENSE                | 'x' | Out-File LICENSE.txt
+FAIL  Bash       expected=2 actual=0  commit via -C on vendor wt         | git -C /tmp/tmp.eUO2VKK1Tv/vendor-wt commit -m 'should be blocked'
+# cases: 91, result: FAILURES

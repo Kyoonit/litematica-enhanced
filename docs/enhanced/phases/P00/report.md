@@ -6,7 +6,7 @@
   The baseline (`64e74592`) and the phase HEAD both build green. The jars differ only in `fabric.mod.json`, which has 4 identity lines changed.
   The Claude Code kit, the `docs/enhanced/` skeleton, NOTICE/AI disclosure/licence notes, the build and architecture notes, and the seeded registers are committed.
   A reproducible Java inventory script lists 168 config options, 78 hotkeys, 9 tool modes, 26 screens, 1 command and 52 mixins. All 33 STRATEGY IDs are in `problems.md`.
-  The fork's CI is green on the pushed branch. Still open for the human: the guardrail gaps (RISK-08) and masa's twitter/discord contacts (RISK-01).
+  The fork's CI is green on the pushed branch. The external audit (FAIL) was answered by corrections round 1 (below). Still open for the human: the force-push of the rewritten branch and masa's twitter/discord contacts (RISK-01).
 
 ## Acceptance criteria
 | # | Criterion (verbatim from prompt) | Status | Evidence (link) |
@@ -69,11 +69,23 @@
 - At the human's request, the commits were re-authored before the first push (`git rebase --exec 'git commit --amend --author=…'`, no force-push). Every tree is unchanged. Logs and `pre-audit.md` written earlier cite the old ids; see `logs/commit-rewrite-map.txt`.
 
 ## Known limitations / open items (register IDs)
-- RISK-01 masa's twitter/discord contacts · RISK-02 non-reproducible jars (P01) · RISK-03 Gradle 10 deprecation · RISK-04 MaLiLib 0.30.2 untagged · RISK-05/06/07 closed (cold CI build green, Issues enabled) · RISK-08 guardrail gaps (hook patterns, PowerShell tool).
+- RISK-01 masa's twitter/discord contacts · RISK-02 non-reproducible jars (P01) · RISK-03 Gradle 10 deprecation · RISK-04 MaLiLib 0.30.2 untagged · RISK-05/06/07 closed (cold CI build green, Issues enabled) · RISK-08 closed (hook hardened in corrections round 1).
 - All 33 problem IDs are `to-verify (P02)`. Licence-portal rules (Modrinth/CurseForge) were taken from the dossier, not re-fetched; re-check at P19.
 
 ## Rollback plan
-Nothing is merged. To roll back, delete the local branch `phase/P00-bootstrap` (never pushed); `enhanced/main` and `vendor/sakura-26.3` stay at `64e74592`. The one functional file can be restored with `git checkout baseline/sakura-26.3-0.29.2-sakura.1 -- src/main/resources/fabric.mod.json`.
+Nothing is merged into `enhanced/main`. `phase/P00-bootstrap` is on `origin` (pushed for CI, Step 8). To roll back, the human deletes the remote branch (`git push origin --delete phase/P00-bootstrap`, blocked for Claude by the hook) and the local one; `enhanced/main` and `vendor/sakura-26.3` stay at `64e74592`. The one functional file can be restored with `git checkout baseline/sakura-26.3-0.29.2-sakura.1 -- src/main/resources/fabric.mod.json`.
+
+## Corrections round 1 (external audit FAIL)
+All six findings handled; details, reproductions and evidence in [corrections.md](corrections.md). BASE_DELTA = `c38f7ef2`.
+
+| Claim | Command | Evidence | Result |
+|---|---|---|---|
+| Hook blocks the auditor's 20 probes and the new rules, allows normal commands, Bash and PowerShell | `bash tools/hooks/test-guard-bash.sh` | `logs/hook-test-hardened.log`, `logs/corrections-1/hook-test-before-fix.log` | 91/91 pass (old hook: 35 fail) |
+| User name removed from every P00 commit; final tree unchanged | `git filter-branch --index-filter …`, `git log -p … \| grep -c` | `logs/commit-rewrite-map.txt` (second section) | 0 occurrences, tree `3c321430` both sides |
+| Build still green | `./gradlew clean build test --no-daemon` (fresh worktree of `3c76b6e9`) | `logs/corrections-1/build.log` | BUILD SUCCESSFUL |
+| Inventory rerun leaves `git status` clean | `java tools/inventory/Inventory.java` twice | `logs/corrections-1/inventory-eol.txt` | clean (old script: `M`) |
+
+Commit ids cited in the sections above are pre-rewrite ids; the second section of `logs/commit-rewrite-map.txt` maps them (for example `981b0593` → `ffd672fa`, `c03383a5` → `01f553af`).
 
 ## Manual playtest checklist for the human (if the roadmap requires one)
 Not required for P00. Optional: launch the HEAD jar with MaLiLib 0.30.2 and check that Mod Menu shows "(unofficial fork)" and the fork links.

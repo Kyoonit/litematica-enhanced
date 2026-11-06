@@ -22,3 +22,29 @@ f036365e | cfe5e179 | e58a9ef4 (same) | [P00] docs: record the pre-audit result 
 6a341708 | 6826bbdc | 46a8cd29 (same) | [P00] logs: mask the local Windows user name in committed files
 164354c2 | ff260627 | 773395fc (same) | [P00] docs: fix the path example in the STATE log rule
 # trees differing: 0
+
+# Second rewrite (2026-11-06, AUD-P00-03): git filter-branch --index-filter over baseline/sakura-26.3-0.29.2-sakura.1..phase/P00-bootstrap,
+# masking the user name in the blobs of every commit under docs/enhanced/phases/P00 (same rules as 6826bbdc).
+# Columns: id on origin before | id after | tree check | subject
+1b75d60a | 1b75d60a | same | [P00] kit: install the Claude Code kit and ignore worktrees and _dossier
+4ca0b1db | 4ca0b1db | same | [P00] docs: add the docs/enhanced skeleton, programme documents and prompts
+6313d91a | 8574cdbf | masked | [P00] git: track phase log directories despite the upstream logs/ ignore rule
+0a214c62 | 6769f3ec | masked | [P00] licence: add NOTICE.md, the AI disclosure and licence/contribution notes
+cc53d26c | 6e74ebe7 | masked | [P00] baseline: record upstream state, remotes, baseline build and jar hashes
+141319b2 | d40c6543 | masked | [P00] identity: point fabric.mod.json contact URLs to the fork
+dd49d4cd | 53f5a59e | masked | [P00] inventory: add the feature inventory script and the first-pass register
+438a3544 | e50d1201 | masked | [P00] knowledge: add the architecture map
+981b0593 | ffd672fa | masked | [P00] registers: seed problems from STRATEGY §4, add P00 risks and upstream patches
+ed5f2813 | 83676c92 | masked | [P00] checks: record HEAD build, jar comparison, scope and CI checks
+af13697c | fc2b97ea | masked | [P00] docs: add the P00 integration log
+ae224d61 | fee48fb6 | masked | [P00] checks: record the docs skeleton and problem-ID checks
+2306c8ba | 2414c304 | masked | [P00] docs: fill STATE and ROADMAP for the audit, add the phase report
+6d20a9a9 | 12d8a9e1 | masked | [P00] audit: add the independent pre-audit
+d1b2483a | b5836c69 | masked | [P00] docs: address pre-audit findings AUD-P00-03, -04 and -07
+cfe5e179 | ea50158d | masked | [P00] docs: record the pre-audit result and close out P00 for audit
+6826bbdc | 3971824d | same | [P00] logs: mask the local Windows user name in committed files
+ff260627 | b665b53b | same | [P00] docs: fix the path example in the STATE log rule
+c03383a5 | 01f553af | same | [P00] docs: record the commit re-authoring and the owner's decisions
+d5e52747 | c38f7ef2 | same | [P00] checks: record the green fork CI run and the agent loading check
+# final tree: 3c321430 before, 3c321430 after
+# occurrences of the user name in 'git log -p baseline..c38f7ef2': 0

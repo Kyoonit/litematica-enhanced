@@ -12,6 +12,8 @@
 | 2026-11-06 | P00 | Mask the local Windows user name in committed logs (home-directory paths and `ls -l` owner columns → `<user>`), now and in every future log | Kyoonit (owner) | pre-audit AUD-P00-06 |
 | 2026-11-06 | P00 | Commit identity for this repository = `Kyoonit <176595771+Kyoonit@users.noreply.github.com>` (repo-local git config); the P00 commits were re-authored before the first push, trees unchanged | Kyoonit (owner) | `phases/P00/logs/commit-rewrite-map.txt` |
 | 2026-11-06 | P00 | Push `phase/P00-bootstrap` to `origin` to run the fork's CI (Step 8). The owner enabled Issues and Actions on the fork | Kyoonit (owner) | `phases/P00/logs/ci-fork-run.txt` |
+| 2026-11-06 | P00 | Harden the guard hook beyond the dossier kit (argument parsing, PowerShell tool, more rules) after the external audit's AUD-P00-01/-02; closes RISK-08 | Kyoonit (owner) | `phases/P00/corrections.md`, `phases/P00/logs/hook-test-hardened.log` |
+| 2026-11-06 | P00 | Rewrite the P00 history to remove the user name from every commit and replace the branch on `origin` (the owner runs the force-push) after AUD-P00-03 | Kyoonit (owner) | `phases/P00/corrections.md`, `phases/P00/logs/commit-rewrite-map.txt` |
 
 ## ADR index
 | ADR | Title | Status (proposed/accepted/superseded) | Phase | Upstream cat. |
