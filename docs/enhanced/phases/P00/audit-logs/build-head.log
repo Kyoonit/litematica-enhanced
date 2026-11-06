@@ -1,0 +1,41 @@
+d5e5274739044a812c8e7a8b408a2ae4d623d608
+0
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.7.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :
+Fabric Loom: 1.18.4
+
+> Task :clean UP-TO-DATE
+
+> Task :compileJava
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: C:\Users\<user>\AppData\Local\Temp\claude\a22cc0fc95bcb549\211109a3-1717-44c6-a256-92a4bed44506\scratchpad\head-clone\src\main\java\fi\dy\masa\litematica\util\PlacementHandler.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+> Task :processResources
+> Task :classes
+> Task :processIncludeJars
+> Task :sourcesJar
+> Task :compileTestJava NO-SOURCE
+> Task :processTestResources NO-SOURCE
+> Task :testClasses UP-TO-DATE
+> Task :test NO-SOURCE
+> Task :jar
+> Task :validateAccessWidener
+> Task :assemble
+> Task :check
+> Task :build
+
+[Incubating] Problems report is available at: file:///C:/Users/<user>/AppData/Local/Temp/claude/a22cc0fc95bcb549/211109a3-1717-44c6-a256-92a4bed44506/scratchpad/head-clone/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.7.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 14s
+7 actionable tasks: 6 executed, 1 up-to-date
+head exit 0

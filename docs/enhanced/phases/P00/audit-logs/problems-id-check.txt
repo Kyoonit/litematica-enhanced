@@ -1,0 +1,71 @@
+# STRATEGY §4 (lines 124-201) IDs vs registers/problems.md (auditor)
+distinct IDs in STRATEGY §4: 33
+ARCH-01 rows=1 to-verify(P02)=1
+ARCH-02 rows=1 to-verify(P02)=1
+ARCH-03 rows=1 to-verify(P02)=1
+ARCH-04 rows=1 to-verify(P02)=1
+ARCH-05 rows=1 to-verify(P02)=1
+ARCH-06 rows=1 to-verify(P02)=1
+ARCH-07 rows=1 to-verify(P02)=1
+PERF-01 rows=1 to-verify(P02)=1
+PERF-02 rows=1 to-verify(P02)=1
+PERF-03 rows=1 to-verify(P02)=1
+PERF-04 rows=1 to-verify(P02)=1
+PERF-05 rows=1 to-verify(P02)=1
+PERF-06 rows=1 to-verify(P02)=1
+PERF-07 rows=1 to-verify(P02)=1
+PERF-08 rows=1 to-verify(P02)=1
+PERF-09 rows=1 to-verify(P02)=1
+REL-01 rows=1 to-verify(P02)=1
+REL-02 rows=1 to-verify(P02)=1
+REL-03 rows=1 to-verify(P02)=1
+REL-04 rows=1 to-verify(P02)=1
+REL-05 rows=1 to-verify(P02)=1
+REL-06 rows=1 to-verify(P02)=1
+REL-07 rows=1 to-verify(P02)=1
+REL-08 rows=1 to-verify(P02)=1
+SEC-01 rows=1 to-verify(P02)=1
+UX-01 rows=1 to-verify(P02)=1
+UX-02 rows=1 to-verify(P02)=1
+UX-03 rows=1 to-verify(P02)=1
+UX-04 rows=1 to-verify(P02)=1
+UX-05 rows=1 to-verify(P02)=1
+UX-06 rows=1 to-verify(P02)=1
+UX-07 rows=1 to-verify(P02)=1
+UX-08 rows=1 to-verify(P02)=1
+
+# Confidence: STRATEGY §4 column vs problems.md column (auditor)
+ARCH-01 | STRATEGY: Introduce an explicit `LitematicaContext`/services and migrate step by step (strangler) | register: not stated
+ARCH-02 | STRATEGY: Split into `Schematic` model + per-format codecs + services (as in masa's rewrite) | register: not stated
+ARCH-03 | STRATEGY: Keep the approach (it works) but **isolate version-sensitive code behind adapters**, and record each mixin's purpose in a mixin register | register: not stated
+ARCH-04 | STRATEGY: Move logic into domain services; keep utils pure and tested | register: not stated
+ARCH-05 | STRATEGY: Remove during refactors, with git history as the archive (one PR per area) | register: not stated
+ARCH-06 | STRATEGY: Characterisation tests first (Phase 1), then unit and game tests | register: not stated
+ARCH-07 | STRATEGY: Build on it. Do not reinvent | register: not stated
+PERF-01 | STRATEGY: Off-thread meshing over immutable section snapshots, uploads on the render thread, with a priority queue by distance | register: hypothesis
+PERF-02 | STRATEGY: Adaptive budget from measured frame time. Default must not stall frames | register: hypothesis
+PERF-03 | STRATEGY: Reintroduce threading safely (PERF-01) | register: hypothesis
+PERF-04 | STRATEGY: Async load with progress and cancellation; preview from a metadata-only read | register: hypothesis
+PERF-05 | STRATEGY: Measure retained heap per placement; consider a lazily materialised or shared-palette schematic world, and sparse containers (as in masa's rewrite) | register: hypothesis
+PERF-06 | STRATEGY: Primitive long-packed positions, incremental per-chunk results, off-thread diffing | register: hypothesis
+PERF-07 | STRATEGY: A budgeted job system and off-thread compute where reads are snapshot-safe | register: hypothesis
+PERF-08 | STRATEGY: Document the thread model, add stress tests | register: hypothesis
+PERF-09 | STRATEGY: Treat this as a **user-reported symptom to reproduce** in the benchmark suite | register: hypothesis
+REL-01 | STRATEGY: Observed | register: observed
+REL-02 | STRATEGY: Observed (reachability: Hypothesis) | register: observed (reachability: hypothesis)
+REL-03 | STRATEGY: Observed; impact needs the Servux protocol | register: observed; impact needs the Servux protocol
+REL-04 | STRATEGY: Observed | register: observed
+REL-05 | STRATEGY: Observed | register: observed
+REL-06 | STRATEGY: Hypothesis | register: hypothesis
+REL-07 | STRATEGY: Observed | register: observed
+REL-08 | STRATEGY: Observed (current status: verify) | register: observed (current status: verify)
+SEC-01 | STRATEGY: Hypothesis | register: hypothesis
+UX-01 | STRATEGY: Observed | register: observed
+UX-02 | STRATEGY: Observed | register: observed
+UX-03 | STRATEGY: Observed (conflicts: Hypothesis) | register: observed (conflicts: hypothesis)
+UX-04 | STRATEGY: Observed | register: observed
+UX-05 | STRATEGY: Observed | register: observed
+UX-06 | STRATEGY: Hypothesis | register: hypothesis
+UX-07 | STRATEGY: Observed | register: observed
+UX-08 | STRATEGY: Hypothesis (needs journey testing) | register: hypothesis (needs journey testing)
+# Note: STRATEGY §4.B (PERF) and §4.D (ARCH) tables have no Confidence column (4.B heading: 'all hypotheses'), so the STRATEGY value printed above for those rows is the Direction column; the register's 'hypothesis' / 'not stated' is faithful.

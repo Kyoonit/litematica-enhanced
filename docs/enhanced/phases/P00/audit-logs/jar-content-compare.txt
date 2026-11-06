@@ -1,0 +1,10 @@
+# A=baseline build, B=HEAD build; CRC32 per entry
+## main jar
+DIFF   fabric.mod.json
+entries A=774 B=774 identical=773
+## sources jar
+DIFF   fabric.mod.json
+entries A=586 B=586 identical=585
+
+## committed baseline copy docs/enhanced/baseline/litematica-fabric-26.3-0.29.2-sakura.1.jar vs auditor's baseline build (A=committed, B=auditor build)
+entries A=774 B=774 identical=774

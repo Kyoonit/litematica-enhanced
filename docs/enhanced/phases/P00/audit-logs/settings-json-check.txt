@@ -1,0 +1,2 @@
+valid JSON; worktree.baseRef = "head" ; PreToolUse matchers = [["Bash",["bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/guard-bash.sh\""]]]
+exit 0

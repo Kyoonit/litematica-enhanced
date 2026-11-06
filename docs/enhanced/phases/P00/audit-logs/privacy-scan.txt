@@ -1,0 +1,29 @@
+# Privacy / secrets scan of the HEAD tree (auditor). Patterns kept generic here; the user name is the Windows account name.
+$ git grep -il "<windows user name>" HEAD (case-insensitive, word)
+(end)
+$ git grep -nE "[A-Za-z]:[/\\]+Users[/\\]+[^<%$ /\\]" (absolute home paths not masked)
+(end)
+$ git grep -nE "/home/[a-z]|/Users/[a-z]" (unix home paths)
+(end)
+$ token patterns (ghp_, github_pat_, gho_, sk-, AKIA, BEGIN PRIVATE KEY, password=)
+HEAD:docs/enhanced/phases/P00/pre-audit.md:66:Diff review summary: `git diff --name-status --diff-filter=MDRTC BASE..HEAD` → only `M .gitignore` and `M src/main/resources/fabric.mod.json`; 145 added
+(end)
+$ email addresses in files added since baseline
+docs/enhanced/DECISIONS.md:13:176595771+Kyoonit@users.noreply.github.com
+docs/enhanced/phases/P00/logs/commit-rewrite-map.txt:2:176595771+Kyoonit@users.noreply.github.com
+(end)
+$ files added since baseline larger than 500 KB
+1976015 docs/enhanced/baseline/litematica-fabric-26.3-0.29.2-sakura.1.jar
+(end)
+
+# Note: the single token-pattern hit above (pre-audit.md:66) was inspected by the auditor: no secret, the regex matched ordinary prose.
+$ history scan: every blob/diff in BASE..HEAD for the Windows user name (count of matching diff lines, case-insensitive)
+24
+$ commits in BASE..HEAD whose diff adds the user name
+6d20a9a9 [P00] audit: add the independent pre-audit : 1 added lines
+ed5f2813 [P00] checks: record HEAD build, jar comparison, scope and CI checks : 6 added lines
+cc53d26c [P00] baseline: record upstream state, remotes, baseline build and jar hashes : 4 added lines
+6313d91a [P00] git: track phase log directories despite the upstream logs/ ignore rule : 1 added lines
+(end)
+$ author/committer identities in BASE..HEAD
+     20 Kyoonit <176595771+Kyoonit@users.noreply.github.com> | Kyoonit <176595771+Kyoonit@users.noreply.github.com>

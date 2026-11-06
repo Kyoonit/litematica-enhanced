@@ -1,0 +1,30 @@
+# Auditor independent cross-check — grep, not the inventory script
+$ grep -cE "^\s*public static final Config\w+\s+\w+\s*=\s*new Config" Configs.java Hotkeys.java
+src/main/java/fi/dy/masa/litematica/config/Configs.java:168
+src/main/java/fi/dy/masa/litematica/config/Hotkeys.java:78
+$ all "new Config...(" occurrences incl. comments
+src/main/java/fi/dy/masa/litematica/config/Configs.java:175
+src/main/java/fi/dy/masa/litematica/config/Hotkeys.java:78
+$ commented-out declarations (//...new Config)
+src/main/java/fi/dy/masa/litematica/config/Configs.java:7
+src/main/java/fi/dy/masa/litematica/config/Hotkeys.java:0
+$ ConfigBooleanHotkeyed declarations (uncommented)
+28
+$ uncommented declarations by type
+     75 ConfigBoolean
+     28 ConfigBooleanHotkeyed
+     11 ConfigColor
+      9 ConfigDouble
+      1 ConfigFloat
+     78 ConfigHotkey
+     18 ConfigInteger
+     17 ConfigOptionList
+      8 ConfigString
+      1 ConfigStringList
+$ @Mixin classes
+52
+$ mixin entries in mixins.litematica.json
+53
+$ config+hotkey IDs (incl. commented) BASE vs HEAD: base=253 head=253
+(identical)
+list entries: 52

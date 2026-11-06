@@ -1,0 +1,11 @@
+# Installed files vs the owner's _dossier (main clone, read-only); diff --strip-trailing-cr
+## prompts
+## kit .claude
+## kit CLAUDE.md
+## templates
+## programme documents
+same 01-strategic-analysis.md -> STRATEGY.md
+same 02-roadmap.md -> ROADMAP-PLAN.md
+same 03-reference-documentation.md -> REFERENCE.md
+same 04-agent-operating-model.md -> AGENTS.md
+same 05-github-contribution-strategy.md -> UPSTREAM.md

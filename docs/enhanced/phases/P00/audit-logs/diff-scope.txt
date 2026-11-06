@@ -1,0 +1,66 @@
+$ git diff --stat B..HEAD -- src/
+ src/main/resources/fabric.mod.json | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+$ git diff B..HEAD -- src/
+diff --git a/src/main/resources/fabric.mod.json b/src/main/resources/fabric.mod.json
+index 1a8e1ed3..102c0819 100644
+--- a/src/main/resources/fabric.mod.json
++++ b/src/main/resources/fabric.mod.json
+@@ -3,7 +3,7 @@
+     "id": "litematica",
+     "name": "Litematica",
+     "version": "${mod_version}",
+-    "description": "A modern schematic mod for LiteLoader, Rift, Fabric etc.",
++    "description": "A modern schematic mod for LiteLoader, Rift, Fabric etc. (unofficial fork)",
+     "authors": [
+         "masa"
+     ],
+@@ -11,9 +11,9 @@
+         "Sakura-Ryoko"
+     ],
+     "contact": {
+-        "homepage": "https://www.curseforge.com/minecraft/mc-mods/litematica",
+-        "issues": "https://github.com/maruohon/litematica/issues",
+-        "sources": "https://github.com/maruohon/litematica",
++        "homepage": "https://github.com/Kyoonit/litematica-enhanced",
++        "issues": "https://github.com/Kyoonit/litematica-enhanced/issues",
++        "sources": "https://github.com/Kyoonit/litematica-enhanced",
+         "twitter": "https://twitter.com/maruohon",
+         "discord": "https://discordapp.com/channels/211786369951989762/453662800460644354/"
+     },
+$ git diff --name-status B..HEAD -- . ":!docs/enhanced"
+A	.claude/agents/Explore.md
+A	.claude/agents/architect.md
+A	.claude/agents/cartographer.md
+A	.claude/agents/doc-writer.md
+A	.claude/agents/feature-designer.md
+A	.claude/agents/independent-auditor.md
+A	.claude/agents/perf-engineer.md
+A	.claude/agents/reliability-engineer.md
+A	.claude/agents/test-engineer.md
+A	.claude/agents/ui-engineer.md
+A	.claude/agents/upstream-liaison.md
+A	.claude/agents/ux-designer.md
+A	.claude/hooks/guard-bash.sh
+A	.claude/rules/gui.md
+A	.claude/rules/mixins.md
+A	.claude/rules/network-fairness.md
+A	.claude/rules/rendering-threading.md
+A	.claude/rules/schematic-io.md
+A	.claude/rules/tests-benchmarks.md
+A	.claude/settings.json
+M	.gitignore
+A	CLAUDE.md
+A	NOTICE.md
+M	src/main/resources/fabric.mod.json
+A	tools/hooks/test-guard-bash.sh
+A	tools/inventory/Inventory.java
+$ git diff --shortstat B..HEAD
+ 151 files changed, 9834 insertions(+), 4 deletions(-)
+$ git diff --shortstat --ignore-all-space --ignore-cr-at-eol B..HEAD
+ 151 files changed, 9834 insertions(+), 4 deletions(-)
+$ git diff --diff-filter=DMR --name-status B..HEAD (modified/deleted/renamed baseline files)
+M	.gitignore
+M	src/main/resources/fabric.mod.json
+$ cmp LICENSE.txt blobs
+base 65c5ca88a67c30becee01c5a8816d964b03862f9 head 65c5ca88a67c30becee01c5a8816d964b03862f9

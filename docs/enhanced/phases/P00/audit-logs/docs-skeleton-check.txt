@@ -1,0 +1,58 @@
+# Docs skeleton check (auditor) against implementation prompt Step 5
+tracked  CLAUDE.md
+tracked  NOTICE.md
+tracked  docs/enhanced/STATE.md
+tracked  docs/enhanced/ROADMAP.md
+tracked  docs/enhanced/DECISIONS.md
+tracked  docs/enhanced/AI_DISCLOSURE.md
+tracked  docs/enhanced/README.md
+tracked  docs/enhanced/registers/problems.md
+tracked  docs/enhanced/registers/features.md
+tracked  docs/enhanced/registers/risks.md
+tracked  docs/enhanced/registers/upstream.md
+tracked  docs/enhanced/knowledge/mixin-register.md
+tracked  docs/enhanced/benchmarks/PROTOCOL.md
+tracked  docs/enhanced/STRATEGY.md
+tracked  docs/enhanced/ROADMAP-PLAN.md
+tracked  docs/enhanced/REFERENCE.md
+tracked  docs/enhanced/AGENTS.md
+tracked  docs/enhanced/UPSTREAM.md
+tracked  docs/enhanced/knowledge/licence-and-contribution.md
+tracked  docs/enhanced/knowledge/build.md
+tracked  docs/enhanced/knowledge/architecture-map.md
+tracked  templates/STATE.md
+tracked  templates/ROADMAP.md
+tracked  templates/DECISIONS.md
+tracked  templates/AI_DISCLOSURE.md
+tracked  templates/docs-README.md
+tracked  templates/problems-register.md
+tracked  templates/features-register.md
+tracked  templates/risks-register.md
+tracked  templates/upstream-register.md
+tracked  templates/mixin-register.md
+tracked  templates/benchmark-PROTOCOL.md
+tracked  templates/adr.md
+tracked  templates/phase-plan.md
+tracked  templates/phase-report.md
+tracked  templates/agent-report.md
+tracked  templates/audit-report.md
+tracked  templates/feature-card.md
+tracked  templates/knowledge-note.md
+tracked  templates/playtest-checklist.md
+tracked  templates/benchmark-result.schema.json
+tracked  adr/ (1 files)
+tracked  knowledge/subsystems/ (1 files)
+tracked  benchmarks/scenarios/ (1 files)
+tracked  benchmarks/results/ (1 files)
+tracked  design/ (1 files)
+tracked  specs/ (1 files)
+tracked  compat/ (1 files)
+tracked  phases/ (31 files)
+tracked  upstream-prs/ (1 files)
+tracked  architecture/ (1 files)
+prompts tracked: 45
+$ git check-ignore -v _dossier/x .claude/worktrees/x
+.gitignore:16:_dossier/	_dossier/x
+.gitignore:15:.claude/worktrees/	.claude/worktrees/x
+$ git ls-files | grep -i dossier
+0

@@ -1,0 +1,12 @@
+# Fork CI (auditor, read-only gh queries) — 2026-11-06T11:08:53Z
+$ gh run view 42206004436 --repo Kyoonit/litematica-enhanced --json ...
+{"conclusion":"success","createdAt":"2026-11-06T10:52:47Z","headBranch":"phase/P00-bootstrap","headSha":"c03383a57293133e5cfa7b8a8e5f53e2bb1a01c9","status":"completed","workflowName":"build"}
+$ gh run list --repo Kyoonit/litematica-enhanced --branch phase/P00-bootstrap
+[{"conclusion":"success","databaseId":42206273332,"headSha":"d5e5274739044a812c8e7a8b408a2ae4d623d608","status":"completed","workflowName":"build"},{"conclusion":"success","databaseId":42206004436,"headSha":"c03383a57293133e5cfa7b8a8e5f53e2bb1a01c9","status":"completed","workflowName":"build"}]
+$ git diff --stat c03383a5..d5e52747
+ docs/enhanced/STATE.md                             |  7 +---
+ docs/enhanced/phases/P00/logs/agents-cli-check.txt | 43 ++++++++++++++++++++++
+ docs/enhanced/phases/P00/logs/ci-fork-run.txt      |  9 +++++
+ docs/enhanced/phases/P00/report.md                 | 12 +++---
+ docs/enhanced/registers/risks.md                   |  8 ++--
+ 5 files changed, 64 insertions(+), 15 deletions(-)

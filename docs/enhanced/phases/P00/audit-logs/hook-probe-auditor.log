@@ -1,0 +1,23 @@
+# auditor hook probe — 2026-11-06T11:04:37Z
+# hook: .claude/hooks/guard-bash.sh (blob 33a60336c7fef0408e0c0b9ae2101cf3f336fa0b)
+MISMATCH expected=2 actual=0 | git push origin +main
+OK       expected=2 actual=2 | git push --force-with-lease
+OK       expected=2 actual=2 | git -C . reset --hard
+MISMATCH expected=2 actual=0 | git push origin +HEAD:enhanced/main
+MISMATCH expected=2 actual=0 | git push -fu origin main
+OK       expected=2 actual=2 | git push origin main --force
+OK       expected=2 actual=2 | git push origin main -f
+MISMATCH expected=2 actual=0 | git push "origin" --force
+MISMATCH expected=2 actual=0 | git reset "--hard" HEAD~1
+MISMATCH expected=2 actual=0 | git push --forc origin main
+MISMATCH expected=2 actual=0 | git reset --har HEAD~1
+MISMATCH expected=2 actual=0 | git push https://github.com/sakura-ryoko/litematica.git HEAD:26.3
+MISMATCH expected=2 actual=0 | git branch --delete --force enhanced/main
+MISMATCH expected=2 actual=0 | git update-ref -d refs/heads/enhanced/main
+MISMATCH expected=2 actual=0 | git tag -f baseline/sakura-26.3-0.29.2-sakura.1 HEAD
+OK       expected=2 actual=2 | git push origin :refs/tags/baseline/sakura-26.3-0.29.2-sakura.1
+OK       expected=2 actual=2 | cd /c/repo && git push --force origin x
+OK       expected=0 actual=0 | git config --get-all remote.upstream-sakura.pushurl
+OK       expected=0 actual=0 | git log --oneline origin/main..HEAD
+OK       expected=0 actual=0 | git push origin phase/P00-bootstrap
+# cases: 20, mismatches: 11

@@ -1,0 +1,31 @@
+# Inventory reproducibility (auditor) — 2026-11-06T11:05:17Z — clean clone at d5e52747
+# run1/run2: java tools/inventory/Inventory.java --stdout
+run1 sha256 ffff24633b367b8fcc453059b2a4422a22a427f28e12e66f237b74879509c292 *-
+run2 sha256 ffff24633b367b8fcc453059b2a4422a22a427f28e12e66f237b74879509c292 *-
+$ diff run1 run2
+(empty: identical)
+$ java tools/inventory/Inventory.java  (write mode), then git status --porcelain
+Updated docs/enhanced/registers/features.md
+Counts:
+  config options: 168
+    of which ConfigBooleanHotkeyed (also bindable): 28
+  hotkeys (ConfigHotkey): 78
+  declarations not in an ImmutableList.of(...) list: 1
+  commented-out config declarations (dormant, not counted): 7
+  tool modes: 9
+  GUI screen classes: 26
+    concrete: 22
+    abstract: 4
+  client commands: 1
+  mixin classes (@Mixin): 52
+  mixin entries in mixins.litematica.json: 52
+  distinct mixin targets: 47
+  injector annotations (@Inject/@Redirect/@Modify*/@Wrap*/@Overwrite): 50
+  config options by category: {Colors=11, Generic=87, InfoOverlays=27, Visuals=43}
+ M docs/enhanced/registers/features.md
+(end of status; empty = committed register matches regenerated output)
+
+$ git diff --stat; git diff --ignore-cr-at-eol --stat  (in the clean clone after write mode)
+warning: in the working copy of 'docs/enhanced/registers/features.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/enhanced/registers/features.md', LF will be replaced by CRLF the next time Git touches it
+(both empty: the M status is a line-ending-only difference: the script writes LF into a core.autocrlf=true checkout)

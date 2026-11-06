@@ -1,0 +1,19 @@
+# Rewrite map check (auditor): for each old->new pair, compare tree ids
+c4c51920 -> 1b75d60a : same-tree
+c9f0d906 -> 4ca0b1db : same-tree
+ab78520a -> 6313d91a : same-tree
+d5870e0a -> 0a214c62 : same-tree
+fa1090e8 -> cc53d26c : same-tree
+3184a6ec -> 141319b2 : same-tree
+aab2ce55 -> dd49d4cd : same-tree
+3367594c -> 438a3544 : same-tree
+d5820ff3 -> 981b0593 : same-tree
+1d800bbe -> ed5f2813 : same-tree
+08672ecf -> af13697c : same-tree
+d41dbc18 -> ae224d61 : same-tree
+2ae61b02 -> 2306c8ba : same-tree
+343289d3 -> 6d20a9a9 : same-tree
+b20cbfee -> d1b2483a : same-tree
+f036365e -> cfe5e179 : same-tree
+6a341708 -> 6826bbdc : same-tree
+164354c2 -> ff260627 : same-tree

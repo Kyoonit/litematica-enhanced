@@ -1,0 +1,7 @@
+# Throwaway repo under the auditor scratchpad (bare remote + clone, empty commits); each variant pushes a rewritten (non-fast-forward) main.
+remote main: bdad044
+error: ambiguous option: forc (could be --force-with-lease or --force-if-includes)
+variant '--forc' exit=129 remote main now bdad044 local e279791
+variant '-fu' exit=0 remote main now 1946853 local 1946853
+variant '+main' exit=0 remote main now d7bd204 local d7bd204
+reset --har accepted: HEAD=x

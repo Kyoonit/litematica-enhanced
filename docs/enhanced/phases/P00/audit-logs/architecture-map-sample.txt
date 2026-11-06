@@ -1,0 +1,32 @@
+# Architecture-map sample (auditor) at 64e74592 (src/ identical at HEAD). Statement -> source lines
+## S1 (map:59-61) Litematica.java:13 class, :18 onInitialize, :20 IrisCompat.register, :21 VoxyCompat.register, :22 InitHandler registration
+13: public class Litematica implements ModInitializer
+18:     public void onInitialize()
+20:         IrisCompat.register();
+21:         VoxyCompat.register();
+22:         InitializationHandler.getInstance().registerInitializationHandler(new InitHandler());
+## S2 (map:63-64) mixins.litematica.json: common 23 entries lines 7-31, client 29 entries lines 32-62
+    "mixins": [
+    ],
+    "client": [
+    ],
+entries in 7-31: 23  entries in 32-62: 29
+## S3 (map:66) MixinAbstractContainerScreen.java fully commented out
+non-comment, non-blank lines: 5
+1
+## S4 (map:109,111) ChunkRenderWorkerLitematica.java:34 processTask, :85 rebuildChunk, :233 directExecutor; no Thread/Executor creation in render/schematic
+34:     protected void processTask(final ChunkRenderTaskSchematic task) throws InterruptedException
+85:                 task.getRenderChunk().rebuildChunk(task, pack);
+233:             }, MoreExecutors.directExecutor());
+thread/executor creation in render/schematic:
+0
+## S5 (map:84-85, 103) LitematicaSchematic.java:3295 createFromFile, :2956 readFromFile; WorldSchematic.java:74 extends Level; ChunkSchematic.java:22 extends LevelChunk
+3295: 	public static LitematicaSchematic createFromFile(Path dir, String fileName, FileType schematicType)
+2956: 	private boolean readFromFile(FileType type)
+74: public class WorldSchematic extends Level
+22: public class ChunkSchematic extends LevelChunk
+## S6 (map:69) Configs.java:469 loadFromFile, :509 saveToFile, :538 load
+469:     public static void loadFromFile()
+509:     public static void saveToFile()
+538:     public void load()
+## S3 note: the JSON hit is 'screen.IMixinAbstractContainerScreen' (a different, registered accessor). MixinAbstractContainerScreen.java keeps only package, @Deprecated(forRemoval = true) and an empty class shell with no @Mixin; its body is commented out. The map statement is true in substance.

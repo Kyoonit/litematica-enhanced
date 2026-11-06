@@ -1,0 +1,58 @@
+$ git remote -v
+origin	https://github.com/Kyoonit/litematica-enhanced.git (fetch)
+origin	https://github.com/Kyoonit/litematica-enhanced.git (push)
+upstream-masa	https://github.com/maruohon/litematica.git (fetch)
+upstream-masa	DISABLED (push)
+upstream-sakura	https://github.com/sakura-ryoko/litematica.git (fetch)
+upstream-sakura	DISABLED (push)
+$ git config --get rerere.enabled
+true
+$ git config --get-regexp ^remote\.
+remote.origin.url https://github.com/Kyoonit/litematica-enhanced.git
+remote.origin.fetch +refs/heads/*:refs/remotes/origin/*
+remote.upstream-sakura.url https://github.com/sakura-ryoko/litematica.git
+remote.upstream-sakura.fetch +refs/heads/*:refs/remotes/upstream-sakura/*
+remote.upstream-sakura.pushurl DISABLED
+remote.upstream-masa.url https://github.com/maruohon/litematica.git
+remote.upstream-masa.fetch +refs/heads/*:refs/remotes/upstream-masa/*
+remote.upstream-masa.pushurl DISABLED
+$ git rev-parse vendor/sakura-26.3 baseline-tag^{commit} enhanced/main phase/P00-bootstrap upstream-sakura/26.3 origin/26.3 origin/phase/P00-bootstrap
+64e74592f631cfa5b084bedb0eda5dac8a3b3cb8
+64e74592f631cfa5b084bedb0eda5dac8a3b3cb8
+64e74592f631cfa5b084bedb0eda5dac8a3b3cb8
+d5e5274739044a812c8e7a8b408a2ae4d623d608
+64e74592f631cfa5b084bedb0eda5dac8a3b3cb8
+64e74592f631cfa5b084bedb0eda5dac8a3b3cb8
+d5e5274739044a812c8e7a8b408a2ae4d623d608
+$ git cat-file -t baseline/sakura-26.3-0.29.2-sakura.1
+tag
+$ git ls-remote upstream-sakura refs/heads/26.3 (live, 2026-11-06T11:03:32Z)
+64e74592f631cfa5b084bedb0eda5dac8a3b3cb8	refs/heads/26.3
+$ git ls-remote origin
+64e74592f631cfa5b084bedb0eda5dac8a3b3cb8	HEAD
+64e74592f631cfa5b084bedb0eda5dac8a3b3cb8	refs/heads/26.3
+d5e5274739044a812c8e7a8b408a2ae4d623d608	refs/heads/phase/P00-bootstrap
+$ count of commits in vendor/sakura-26.3 not in upstream-sakura/26.3
+0
+$ git log --oneline baseline..HEAD
+d5e52747 [P00] checks: record the green fork CI run and the agent loading check
+c03383a5 [P00] docs: record the commit re-authoring and the owner's decisions
+ff260627 [P00] docs: fix the path example in the STATE log rule
+6826bbdc [P00] logs: mask the local Windows user name in committed files
+cfe5e179 [P00] docs: record the pre-audit result and close out P00 for audit
+d1b2483a [P00] docs: address pre-audit findings AUD-P00-03, -04 and -07
+6d20a9a9 [P00] audit: add the independent pre-audit
+2306c8ba [P00] docs: fill STATE and ROADMAP for the audit, add the phase report
+ae224d61 [P00] checks: record the docs skeleton and problem-ID checks
+af13697c [P00] docs: add the P00 integration log
+ed5f2813 [P00] checks: record HEAD build, jar comparison, scope and CI checks
+981b0593 [P00] registers: seed problems from STRATEGY §4, add P00 risks and upstream patches
+438a3544 [P00] knowledge: add the architecture map
+dd49d4cd [P00] inventory: add the feature inventory script and the first-pass register
+141319b2 [P00] identity: point fabric.mod.json contact URLs to the fork
+cc53d26c [P00] baseline: record upstream state, remotes, baseline build and jar hashes
+0a214c62 [P00] licence: add NOTICE.md, the AI disclosure and licence/contribution notes
+6313d91a [P00] git: track phase log directories despite the upstream logs/ ignore rule
+4ca0b1db [P00] docs: add the docs/enhanced skeleton, programme documents and prompts
+1b75d60a [P00] kit: install the Claude Code kit and ignore worktrees and _dossier
+$ git log --oneline baseline..enhanced/main
