@@ -14,3 +14,4 @@ libs/
 # Litematica Enhanced (P00)
 .claude/worktrees/
 _dossier/
+!/docs/enhanced/phases/*/logs/

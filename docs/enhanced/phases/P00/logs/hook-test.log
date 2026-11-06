@@ -1,0 +1,20 @@
+# guard-bash.sh hook test — 2026-11-06T10:06:48Z
+# hook: .claude/hooks/guard-bash.sh @ 64e74592 (branch phase/P00-bootstrap)
+PASS  expected=2 actual=2  force push (--force)                   | git push --force origin phase/P00-bootstrap
+PASS  expected=2 actual=2  force push (-f)                        | git push -f origin phase/P00-bootstrap
+PASS  expected=2 actual=2  force push (--force-with-lease)        | git push --force-with-lease origin enhanced/main
+PASS  expected=2 actual=2  push to upstream-sakura                | git push upstream-sakura phase/P00-bootstrap
+PASS  expected=2 actual=2  push to upstream-masa                  | git push upstream-masa HEAD:ornithe/1.12.2
+PASS  expected=2 actual=2  reset --hard                           | git reset --hard HEAD~1
+PASS  expected=2 actual=2  tag deletion enhanced/x                | git tag -d enhanced/x
+PASS  expected=2 actual=2  tag deletion baseline/*                | git tag --delete baseline/sakura-26.3-0.29.2-sakura.1
+PASS  expected=2 actual=2  branch -D vendor/*                     | git branch -D vendor/sakura-26.3
+PASS  expected=2 actual=2  rm -rf .git                            | rm -rf .git
+PASS  expected=2 actual=2  add --renormalize                      | git add --renormalize .
+PASS  expected=0 actual=0  normal build                           | ./gradlew build
+PASS  expected=0 actual=0  normal commit on phase branch          | git commit -m '[P00] docs: add phase plan'
+PASS  expected=0 actual=0  normal push to origin                  | git push origin phase/P00-bootstrap
+PASS  expected=0 actual=0  normal status                          | git status --short
+PASS  expected=0 actual=0  rm -rf build outputs                   | rm -rf build
+PASS  expected=2 actual=2  commit on vendor/sakura-26.3           | git commit -m 'should be blocked'
+# cases: 17, result: ALL PASS

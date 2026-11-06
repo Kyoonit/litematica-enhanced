@@ -1,0 +1,29 @@
+# Project agents and rules installed in .claude/ — 2026-11-06T10:07:00Z
+# /agents is an interactive command and cannot run in this non-interactive session; this is the text listing of the agent definitions (frontmatter name/model/isolation). The human confirms /agents once in an interactive session.
+
+FILE                   MODEL    ISOLATION  NAME
+Explore.md             haiku    -          Explore
+architect.md           opus     -          architect
+cartographer.md        haiku    -          cartographer
+doc-writer.md          haiku    -          doc-writer
+feature-designer.md    sonnet   -          feature-designer
+independent-auditor.md opus     -          independent-auditor
+perf-engineer.md       opus     worktree   perf-engineer
+reliability-engineer.md opus     worktree   reliability-engineer
+test-engineer.md       sonnet   worktree   test-engineer
+ui-engineer.md         sonnet   worktree   ui-engineer
+upstream-liaison.md    sonnet   worktree   upstream-liaison
+ux-designer.md         sonnet   -          ux-designer
+agent files: 12
+
+# rules
+gui.md
+mixins.md
+network-fairness.md
+rendering-threading.md
+schematic-io.md
+tests-benchmarks.md
+rule files: 6
+
+# hook file mode (working tree)
+-rwxr-xr-x 1 <user> 197609 2112 Nov  6 11:04 .claude/hooks/guard-bash.sh

@@ -1,0 +1,7 @@
+# JSON validation of .claude/settings.json — 2026-11-06T10:06:52Z
+# Python is not installed on this machine; equivalent check with Node v24.22.1 JSON.parse
+valid JSON: yes
+worktree.baseRef = "head"
+PreToolUse hooks: [{"matcher":"Bash","commands":["bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/guard-bash.sh\""]}]
+permissions.allow: 19 permissions.deny: 5
+exit=0
