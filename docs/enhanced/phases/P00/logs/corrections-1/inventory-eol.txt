@@ -1,0 +1,14 @@
+# AUD-P00-06 reproduction and fix — 2026-11-06T11:22:20Z, checkout with core.autocrlf=true
+## before (Inventory.java at 3c76b6e9): java Inventory.java (write mode)
+exit=0
+git status --porcelain features.md: [ M docs/enhanced/registers/features.md]
+warning: in the working copy of 'docs/enhanced/registers/features.md', LF will be replaced by CRLF the next time Git touches it
+content diff ignoring CR: 0 lines
+## after (working tree Inventory.java, keeps the file's line endings)
+exit=0
+git status --porcelain features.md: []
+## second run (write mode again; tail of its summary)
+  injector annotations (@Inject/@Redirect/@Modify*/@Wrap*/@Overwrite): 50
+  config options by category: {Colors=11, Generic=87, InfoOverlays=27, Visuals=43}
+exit=0
+git status --porcelain features.md after the second run: []

@@ -588,7 +588,11 @@ public class Inventory
 
     static void writeSection(Path register, String section) throws IOException
     {
-        String text = Files.exists(register) ? Files.readString(register, StandardCharsets.UTF_8).replace("\r\n", "\n") : "# Feature register (inventory + backlog)\n\n";
+        String original = Files.exists(register) ? Files.readString(register, StandardCharsets.UTF_8) : null;
+        // Keep the file's own line endings (CRLF in a core.autocrlf=true checkout), so a rerun
+        // leaves `git status` clean (AUD-P00-06).
+        String eol = original != null && original.contains("\r\n") ? "\r\n" : "\n";
+        String text = original != null ? original.replace("\r\n", "\n") : "# Feature register (inventory + backlog)\n\n";
         int begin = text.indexOf(BEGIN);
         int end = text.indexOf(END);
         String updated;
@@ -602,6 +606,6 @@ public class Inventory
             updated = (text.endsWith("\n") ? text : text + "\n") + "\n" + section;
         }
 
-        Files.writeString(register, updated, StandardCharsets.UTF_8);
+        Files.writeString(register, eol.equals("\n") ? updated : updated.replace("\n", eol), StandardCharsets.UTF_8);
     }
 }
