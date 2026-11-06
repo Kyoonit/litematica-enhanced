@@ -1,6 +1,6 @@
 # P00 — Phase report (≤ 2 pages + ledger)
 
-- **Branch / commits:** `phase/P00-bootstrap` · `baseline/sakura-26.3-0.29.2-sakura.1..phase/P00-bootstrap` · `git log --oneline baseline/sakura-26.3-0.29.2-sakura.1..phase/P00-bootstrap` (12 commits when this report was first committed)
+- **Branch / commits:** `phase/P00-bootstrap` · `baseline/sakura-26.3-0.29.2-sakura.1..phase/P00-bootstrap` · `git log --oneline baseline/sakura-26.3-0.29.2-sakura.1..phase/P00-bootstrap` (16 commits at close-out, this report's commit included)
 - **Outcome in 5 lines:**
   The fork is bootstrapped. Remotes, branches and the baseline tag are in place, with upstream push disabled.
   The baseline (`64e74592`) and the phase HEAD both build green. The jars differ only in `fabric.mod.json`, which has 4 identity lines changed.
@@ -46,7 +46,7 @@
 | Repositories reachable (HTTP 200): masa maven (MaLiLib 0.30.2), fallenbreath maven (conditional-mixin), TerraformersMC (ModMenu), Modrinth maven (Iris), Fabric maven | Java `HttpClient` probe (curl fails here: schannel) | `logs/repo-reachability.txt` | |
 
 ## Changes
-- Subsystems touched: none (no Java change). Upstream files touched: 2 (`src/main/resources/fabric.mod.json` 4 lines, `.gitignore` 5 lines added). New files: 142 (kit, docs, logs, tools, baseline jar). Deleted: 0.
+- Subsystems touched: none (no Java change). Upstream files touched: 2 (`src/main/resources/fabric.mod.json` 4 lines, `.gitignore` 5 lines added). New files: 146 (kit, docs, logs, tools, baseline jar; `git diff --name-only --diff-filter=A` at close-out). Deleted: 0.
 - Feature flags: none. Mixins: none (the mixin register is an empty table, filled in P02). Translation keys: none.
 
 ## Tests
@@ -67,7 +67,7 @@
 - Step 8: nothing was pushed without the human's agreement, so CI has not run on the fork (RISK-07).
 
 ## Known limitations / open items (register IDs)
-- RISK-01 masa's twitter/discord contacts · RISK-02 non-reproducible jars (P01) · RISK-03 Gradle 10 deprecation · RISK-04 MaLiLib 0.30.2 untagged · RISK-05 warm cache · RISK-06 Issues disabled · RISK-07 fork CI never run.
+- RISK-01 masa's twitter/discord contacts · RISK-02 non-reproducible jars (P01) · RISK-03 Gradle 10 deprecation · RISK-04 MaLiLib 0.30.2 untagged · RISK-05 warm cache · RISK-06 Issues disabled · RISK-07 fork CI never run · RISK-08 guardrail gaps (hook patterns, PowerShell tool).
 - All 33 problem IDs are `to-verify (P02)`. Licence-portal rules (Modrinth/CurseForge) were taken from the dossier, not re-fetched; re-check at P19.
 
 ## Rollback plan
@@ -80,4 +80,17 @@ Not required for P00. Optional: launch the HEAD jar with MaLiLib 0.30.2 and chec
 None.
 
 ## Pre-audit
-See [pre-audit.md](pre-audit.md).
+Verdict **PASS WITH RESERVATIONS**: 0 BLOCKER, 0 MAJOR, 4 MINOR, 6 NOTE ([pre-audit.md](pre-audit.md)). The auditor re-ran the HEAD build (and a baseline build) in fresh worktrees, compared the jar contents, the hook test and the inventory, and re-verified all 11 criteria with its own commands. Response:
+
+| Finding | Severity | Action | Where |
+|---|---|---|---|
+| AUD-P00-01 hook misses some destructive forms | MINOR | Not fixed: the hook is a verbatim kit copy, and changing it departs from the dossier, so this is a human decision. Recorded as RISK-08 | `registers/risks.md` |
+| AUD-P00-02 guardrails cover only the Bash tool, not PowerShell | MINOR | Same as above (RISK-08) | `registers/risks.md` |
+| AUD-P00-03 build.md says Fabric API is absent at runtime | MINOR | Fixed: MaLiLib bundles three Fabric API modules, and upstream code already uses `ClientPlayNetworking` (verified in the MaLiLib 0.30.2 jar) | `knowledge/build.md` |
+| AUD-P00-04 Gradle 10 deprecation "source not identified" | MINOR | Fixed: the source is `build.gradle:79`; RISK-03 updated | `knowledge/build.md`, `registers/risks.md` |
+| AUD-P00-05 new-file count | NOTE | Fixed (146 at close-out) | this report |
+| AUD-P00-06 local user name and temp paths in committed logs | NOTE | Not changed (raw logs are evidence). Human decides before the first push | `STATE.md` |
+| AUD-P00-07 NOTICE/AI disclosure gaps | NOTE | Fixed: `.gitignore` row added to NOTICE; AI disclosure lists every AI-made artefact class | `NOTICE.md`, `AI_DISCLOSURE.md` |
+| AUD-P00-08 pending human actions | NOTE | Already in STATE (no change) | `STATE.md` |
+| AUD-P00-09 identity patch checked statically only | NOTE | Optional playtest listed above | this report |
+| AUD-P00-10 working-tree line endings | NOTE | No action (blobs are LF) | — |
