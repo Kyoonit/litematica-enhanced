@@ -1,0 +1,49 @@
+Fetching distribution.
+Downloading https://services.gradle.org/distributions/gradle-9.7.1-bin.zip
+..............10%..............20%...............30%..............40%...............50%..............60%...............70%..............80%..............90%...............100%
+
+Welcome to Gradle 9.7.1!
+
+Here are the highlights of this release:
+ - Isolated Projects graduates to incubating
+ - Broader Configuration Cache compatibility
+ - Resilient Sync helps you fix broken builds
+ - More source locations in problem reports
+
+For more details see https://docs.gradle.org/9.7.1/release-notes.html
+
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.7.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :
+Fabric Loom: 1.18.4
+
+> Task :compileJava
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: C:\Users\<user>\AppData\Local\Temp\claude\3e422fce7c46261e\347507f2-2277-4146-9fb7-a613a08e4c9c\scratchpad\baseline-wt\src\main\java\fi\dy\masa\litematica\util\PlacementHandler.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+> Task :processResources
+Build file 'C:\Users\<user>\AppData\Local\Temp\claude\3e422fce7c46261e\347507f2-2277-4146-9fb7-a613a08e4c9c\scratchpad\baseline-wt\build.gradle': line 79
+Invocation of Task.project at execution time has been deprecated. This will fail with an error in Gradle 10. This API is incompatible with the configuration cache, which will become the only mode supported by Gradle in a future release. Consult the upgrading guide for further information: https://docs.gradle.org/9.7.1/userguide/upgrading_version_7.html#task_project
+	at build_42enczi0ynb498air9qrodcei$_run_closure5$_closure20.doCall$original(C:\Users\<user>\AppData\Local\Temp\claude\3e422fce7c46261e\347507f2-2277-4146-9fb7-a613a08e4c9c\scratchpad\baseline-wt\build.gradle:79)
+	(Run with --stacktrace to get the full stack trace of this deprecation warning.)
+
+> Task :classes
+> Task :processIncludeJars
+> Task :sourcesJar
+> Task :compileTestJava NO-SOURCE
+> Task :processTestResources NO-SOURCE
+> Task :testClasses UP-TO-DATE
+> Task :test NO-SOURCE
+> Task :jar
+> Task :validateAccessWidener
+> Task :assemble
+> Task :check
+> Task :build
+
+[Incubating] Problems report is available at: file:///C:/Users/<user>/AppData/Local/Temp/claude/3e422fce7c46261e/347507f2-2277-4146-9fb7-a613a08e4c9c/scratchpad/baseline-wt/build/reports/problems/problems-report.html
+
+BUILD SUCCESSFUL in 42s
+6 actionable tasks: 6 executed

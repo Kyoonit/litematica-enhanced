@@ -1,0 +1,8 @@
+# java -version
+openjdk version "25.0.5" 2026-10-20 LTS
+OpenJDK Runtime Environment Temurin-25.0.5+8 (build 25.0.5+8-LTS)
+OpenJDK 64-Bit Server VM Temurin-25.0.5+8 (build 25.0.5+8-LTS, mixed mode, sharing)
+# baseline commit: 64e74592f631cfa5b084bedb0eda5dac8a3b3cb8
+# start: 2026-11-06T10:03:44Z
+# end: 2026-11-06T10:04:27Z
+exit=0 duration_s=43

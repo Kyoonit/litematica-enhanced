@@ -1,0 +1,30 @@
+# Repository reachability â€” 2026-11-06T10:08:51Z
+# 1) curl (Git for Windows, schannel TLS backend):
+curl: (35) schannel: next InitializeSecurityContext failed: SEC_E_UNSUPPORTED_FUNCTION (0x80090302) - La fonction demandée n’est pas prise en charge
+http=000 https://masa.dy.fi/maven/sakura-ryoko/fi/dy/masa/malilib/malilib-fabric-26.3/0.30.2/malilib-fabric-26.3-0.30.2.pom
+#    -> curl fails with a local schannel TLS error (SEC_E_UNSUPPORTED_FUNCTION); this is a client-side quirk, not an outage.
+# 2) Java HttpClient (same TLS stack family as Gradle), command: java Probe.java <urls>
+200 HTTP_2 https://masa.dy.fi/maven/sakura-ryoko/fi/dy/masa/malilib/malilib-fabric-26.3/0.30.2/malilib-fabric-26.3-0.30.2.pom
+200 HTTP_2 https://masa.dy.fi/maven/sakura-ryoko/fi/dy/masa/malilib/malilib-fabric-26.3/0.30.2/malilib-fabric-26.3-0.30.2.jar
+200 HTTP_2 https://maven.fallenbreath.me/releases/me/fallenbreath/conditional-mixin-fabric/0.6.4/conditional-mixin-fabric-0.6.4.pom
+200 HTTP_2 https://maven.terraformersmc.com/releases/com/terraformersmc/modmenu/21.0.0/modmenu-21.0.0.pom
+200 HTTP_2 https://api.modrinth.com/maven/maven/modrinth/iris/1.11.6+26.3-fabric/iris-1.11.6+26.3-fabric.pom
+200 HTTP_2 https://maven.fabricmc.net/net/fabricmc/fabric-loader/0.19.5/fabric-loader-0.19.5.pom
+
+# Gradle cache already held MaLiLib before P00: ~/.gradle/caches/modules-2/files-2.1/fi.dy.masa.malilib/malilib-fabric-26.3/0.30.2
+
+# Probe.java source:
+import java.net.URI;
+import java.net.http.*;
+import java.time.Duration;
+public class Probe {
+    public static void main(String[] a) throws Exception {
+        HttpClient c = HttpClient.newBuilder().connectTimeout(Duration.ofSeconds(20)).followRedirects(HttpClient.Redirect.NORMAL).build();
+        for (String u : a) {
+            try {
+                HttpResponse<Void> r = c.send(HttpRequest.newBuilder(URI.create(u)).method("HEAD", HttpRequest.BodyPublishers.noBody()).timeout(Duration.ofSeconds(30)).build(), HttpResponse.BodyHandlers.discarding());
+                System.out.println(r.statusCode() + " " + r.version() + " " + u);
+            } catch (Exception e) { System.out.println("ERR " + e + " " + u); }
+        }
+    }
+}

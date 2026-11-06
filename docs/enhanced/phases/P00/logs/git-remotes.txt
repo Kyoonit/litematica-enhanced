@@ -1,0 +1,10 @@
+# git remote -v (2026-11-06T10:03:31Z)
+origin	https://github.com/Kyoonit/litematica-enhanced.git (fetch)
+origin	https://github.com/Kyoonit/litematica-enhanced.git (push)
+upstream-masa	https://github.com/maruohon/litematica.git (fetch)
+upstream-masa	DISABLED (push)
+upstream-sakura	https://github.com/sakura-ryoko/litematica.git (fetch)
+upstream-sakura	DISABLED (push)
+
+# git config rerere.enabled
+true

@@ -1,0 +1,11 @@
+# git branch -vv
+  26.3                64e74592 [origin/26.3] Translated using Weblate (Chinese (Traditional Han script))
+  enhanced/main       64e74592 Translated using Weblate (Chinese (Traditional Han script))
+* phase/P00-bootstrap 64e74592 Translated using Weblate (Chinese (Traditional Han script))
+  vendor/sakura-26.3  64e74592 Translated using Weblate (Chinese (Traditional Han script))
+
+# git tag (baseline/enhanced only)
+baseline/sakura-26.3-0.29.2-sakura.1
+
+# git show-ref baseline tag (peeled)
+64e74592f631cfa5b084bedb0eda5dac8a3b3cb8
