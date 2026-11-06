@@ -1,0 +1,24 @@
+# Commit identity rewrite — 2026-11-06T10:51:53Z
+# Why: the human chose (2026-11-06) to publish the P00 commits as 'Kyoonit <176595771+Kyoonit@users.noreply.github.com>' instead of a personal address.
+# Done BEFORE the first push (no force-push): git rebase --exec 'git commit --amend --no-edit --author=...' baseline/sakura-26.3-0.29.2-sakura.1
+# Author dates and messages kept; every tree is unchanged (tree column equal for each pair). Logs and pre-audit.md written before this rewrite cite the OLD ids: use this table.
+# old commit | new commit | tree (old = new) | subject
+c4c51920 | 1b75d60a | d6e7fcd6 (same) | [P00] kit: install the Claude Code kit and ignore worktrees and _dossier
+c9f0d906 | 4ca0b1db | 770b8459 (same) | [P00] docs: add the docs/enhanced skeleton, programme documents and prompts
+ab78520a | 6313d91a | d9abe895 (same) | [P00] git: track phase log directories despite the upstream logs/ ignore rule
+d5870e0a | 0a214c62 | 24e39570 (same) | [P00] licence: add NOTICE.md, the AI disclosure and licence/contribution notes
+fa1090e8 | cc53d26c | 73a461cb (same) | [P00] baseline: record upstream state, remotes, baseline build and jar hashes
+3184a6ec | 141319b2 | a5751926 (same) | [P00] identity: point fabric.mod.json contact URLs to the fork
+aab2ce55 | dd49d4cd | 48c46fff (same) | [P00] inventory: add the feature inventory script and the first-pass register
+3367594c | 438a3544 | 349236b6 (same) | [P00] knowledge: add the architecture map
+d5820ff3 | 981b0593 | 1864c1f5 (same) | [P00] registers: seed problems from STRATEGY §4, add P00 risks and upstream patches
+1d800bbe | ed5f2813 | 997c742a (same) | [P00] checks: record HEAD build, jar comparison, scope and CI checks
+08672ecf | af13697c | e9cd4e45 (same) | [P00] docs: add the P00 integration log
+d41dbc18 | ae224d61 | edeb505a (same) | [P00] checks: record the docs skeleton and problem-ID checks
+2ae61b02 | 2306c8ba | 8b775521 (same) | [P00] docs: fill STATE and ROADMAP for the audit, add the phase report
+343289d3 | 6d20a9a9 | 1f11f287 (same) | [P00] audit: add the independent pre-audit
+b20cbfee | d1b2483a | fda5d4be (same) | [P00] docs: address pre-audit findings AUD-P00-03, -04 and -07
+f036365e | cfe5e179 | e58a9ef4 (same) | [P00] docs: record the pre-audit result and close out P00 for audit
+6a341708 | 6826bbdc | 46a8cd29 (same) | [P00] logs: mask the local Windows user name in committed files
+164354c2 | ff260627 | 773395fc (same) | [P00] docs: fix the path example in the STATE log rule
+# trees differing: 0

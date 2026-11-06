@@ -1,6 +1,6 @@
 # P00 — Phase report (≤ 2 pages + ledger)
 
-- **Branch / commits:** `phase/P00-bootstrap` · `baseline/sakura-26.3-0.29.2-sakura.1..phase/P00-bootstrap` · `git log --oneline baseline/sakura-26.3-0.29.2-sakura.1..phase/P00-bootstrap` (16 commits at close-out, this report's commit included)
+- **Branch / commits:** `phase/P00-bootstrap` · `baseline/sakura-26.3-0.29.2-sakura.1..phase/P00-bootstrap` · `git log --oneline baseline/sakura-26.3-0.29.2-sakura.1..phase/P00-bootstrap` (18 commits before the push, re-authored as `Kyoonit` with the GitHub noreply address; old → new ids in `logs/commit-rewrite-map.txt`)
 - **Outcome in 5 lines:**
   The fork is bootstrapped. Remotes, branches and the baseline tag are in place, with upstream push disabled.
   The baseline (`64e74592`) and the phase HEAD both build green. The jars differ only in `fabric.mod.json`, which has 4 identity lines changed.
@@ -13,7 +13,7 @@
 |---|---|---|---|
 | 1 | `git remote -v` shows `origin` = the fork, and `upstream-sakura` / `upstream-masa` with push URL `DISABLED` (log saved). `rerere.enabled` is true. | met | [git-remotes.txt](logs/git-remotes.txt) |
 | 2 | `vendor/sakura-<mc>` equals the recorded upstream HEAD sha. Tag `baseline/sakura-<mc>-<version>` points to that commit. `enhanced/main` and `phase/P00-bootstrap` exist. | met | [upstream-state.txt](logs/upstream-state.txt), [git-branches-tags.txt](logs/git-branches-tags.txt) |
-| 3 | `./gradlew build` succeeds on the baseline commit **and** on the phase branch HEAD. Logs saved; jar names and SHA-256 recorded for both. | met (HEAD = `d5820ff3`; later commits touch `docs/` only) | [build-baseline.log](logs/build-baseline.log), [build-baseline-env.txt](logs/build-baseline-env.txt), [baseline-jars.sha256](logs/baseline-jars.sha256), [build-head.log](logs/build-head.log), [build-head-env.txt](logs/build-head-env.txt), [head-jars.sha256](logs/head-jars.sha256), [jar-content-compare.txt](logs/jar-content-compare.txt) |
+| 3 | `./gradlew build` succeeds on the baseline commit **and** on the phase branch HEAD. Logs saved; jar names and SHA-256 recorded for both. | met (HEAD = `981b0593`, pre-rewrite `d5820ff3`; later commits touch `docs/` only) | [build-baseline.log](logs/build-baseline.log), [build-baseline-env.txt](logs/build-baseline-env.txt), [baseline-jars.sha256](logs/baseline-jars.sha256), [build-head.log](logs/build-head.log), [build-head-env.txt](logs/build-head-env.txt), [head-jars.sha256](logs/head-jars.sha256), [jar-content-compare.txt](logs/jar-content-compare.txt) |
 | 4 | `git diff --stat baseline/sakura-<mc>-<version>..HEAD -- src/` shows **only** `fabric.mod.json`, and that diff touches only contact URLs and the description. | met | [scope-and-licence-checks.txt](logs/scope-and-licence-checks.txt) |
 | 5 | `CLAUDE.md`, 12 agent files, 6 rule files, a valid `settings.json` (with `worktree.baseRef = "head"` and the PreToolUse hook) and an executable `guard-bash.sh` are installed. The hook test log shows the expected exit codes for ≥ 6 payloads. | met (`/agents` listing: text only, see Deviations) | [agents-listing.txt](logs/agents-listing.txt), [settings-json-validation.log](logs/settings-json-validation.log), [hook-test.log](logs/hook-test.log), [docs-skeleton-check.txt](logs/docs-skeleton-check.txt) |
 | 6 | The `docs/enhanced/` skeleton is complete as listed in Step 5. `STATE.md` and `ROADMAP.md` are filled for P00 → P01. | met | [docs-skeleton-check.txt](logs/docs-skeleton-check.txt), [STATE.md](../../STATE.md), [ROADMAP.md](../../ROADMAP.md) |
@@ -31,7 +31,7 @@
 | vendor = enhanced/main = baseline tag = `64e74592` at branch creation | `git branch -vv`, `git show-ref` | `logs/git-branches-tags.txt` | `phase/P00-bootstrap` was branched at the same commit |
 | Baseline build green, 43 s, Temurin 25.0.5 | `./gradlew build` in a detached worktree of the tag | `logs/build-baseline.log`, `logs/build-baseline-env.txt` | Gradle cache was warm (RISK-05) |
 | Baseline jar SHA-256 `d2a9a66d…`, sources `145c7ba6…`; copy kept | `sha256sum` | `logs/baseline-jars.sha256`, `docs/enhanced/baseline/*.jar` | Bytes are not reproducible (RISK-02) |
-| HEAD build green, 15 s; jar `1b9769ba…`, sources `c4e9bc1d…` | `./gradlew build` in a fresh detached worktree of `d5820ff3` | `logs/build-head.log`, `logs/build-head-env.txt`, `logs/head-jars.sha256` | |
+| HEAD build green, 15 s; jar `1b9769ba…`, sources `c4e9bc1d…` | `./gradlew build` in a fresh detached worktree of `d5820ff3` (now `981b0593`) | `logs/build-head.log`, `logs/build-head-env.txt`, `logs/head-jars.sha256` | |
 | Jar contents: 708 entries each; only `fabric.mod.json` differs; version expands to `0.29.2-sakura.1` | `jar xf` both jars, `diff -rq`, Node `JSON.parse` | `logs/jar-content-compare.txt` | |
 | `src/` diff = `fabric.mod.json` only: 4 lines (description + 3 contact URLs) | `git diff --stat` / `git diff -- src/` | `logs/scope-and-licence-checks.txt` | `twitter`/`discord` untouched (RISK-01) |
 | `LICENSE.txt` identical to baseline | `git diff --quiet`, blob ids, `cmp` against the baseline worktree | `logs/scope-and-licence-checks.txt` | First `cmp` against `git show` output was a CRLF false positive; corrected in the log |
@@ -65,6 +65,8 @@
 - The hook test harness lives in `tools/hooks/test-guard-bash.sh` (not named by the prompt).
 - `knowledge/build.md` was written by the lead, not a subagent (Step 4 names no owner).
 - Step 8: nothing was pushed without the human's agreement, so CI has not run on the fork (RISK-07).
+
+- At the human's request, the commits were re-authored before the first push (`git rebase --exec 'git commit --amend --author=…'`, no force-push). Every tree is unchanged. Logs and `pre-audit.md` written earlier cite the old ids; see `logs/commit-rewrite-map.txt`.
 
 ## Known limitations / open items (register IDs)
 - RISK-01 masa's twitter/discord contacts · RISK-02 non-reproducible jars (P01) · RISK-03 Gradle 10 deprecation · RISK-04 MaLiLib 0.30.2 untagged · RISK-05 warm cache · RISK-06 Issues disabled · RISK-07 fork CI never run · RISK-08 guardrail gaps (hook patterns, PowerShell tool).

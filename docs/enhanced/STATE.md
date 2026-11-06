@@ -2,7 +2,7 @@
 
 - **Current phase:** P00 — Bootstrap, fork & baseline preservation — status: in-audit
 - **Branch:** `phase/P00-bootstrap` · base tag: `baseline/sakura-26.3-0.29.2-sakura.1` (= `vendor/sakura-26.3` = `64e74592`)
-- **Last verified commit:** `d5820ff3` — verified by: `./gradlew build` green in a fresh worktree (no tests exist yet) on 2026-11-06 (`phases/P00/logs/build-head.log`). Later P00 commits change only `docs/enhanced/**`.
+- **Last verified commit:** `981b0593` (pre-rewrite id `d5820ff3`, see `phases/P00/logs/commit-rewrite-map.txt`) — verified by: `./gradlew build` green in a fresh worktree (no tests exist yet) on 2026-11-06 (`phases/P00/logs/build-head.log`). Later P00 commits change only `docs/enhanced/**`.
 - **MC / loader / MaLiLib:** 26.3 / Fabric Loader 0.19.5 / 0.30.2 (update when ported)
 
 ## Next action (one line)
